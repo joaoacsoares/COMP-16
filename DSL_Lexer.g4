@@ -438,6 +438,12 @@ STRING
 	[a-zA-z] [a-zA-Z0-9]+
 ;
 
+VAR
+:
+    STRING
+;
+
+
 OPENP
 :
     '('

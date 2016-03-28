@@ -526,7 +526,7 @@ ASSIGMENT
 
 DUMP
 :
-    'dump'
+    '.dump'OPENP CLOSEP
 ;
 
 REVERSE

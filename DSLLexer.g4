@@ -406,9 +406,9 @@ ELLIPSIS : '...';
 WS  :  [ \t\r\n\u000C]+ -> skip
     ;
 
-COMMENT
-    :   '/*' .*? '*/' -> skip
-    ;
+//COMMENT
+//    :   '/*' .*? '*/' -> skip
+//    ;
 
 
 LINE_COMMENT
@@ -417,72 +417,26 @@ LINE_COMMENT
 
 //--------------------- DSL ----------------------------
 
-DSLBegin
+DSLBEGIN
 :
     '/*@SETDSL' -> pushMode( DSL )
 ;
 
 mode DSL;
 
-DSLEnd
+
+DSLEND
 :
     '*/' -> popMode
 ;
 
-DIGIT
-:
-    [0-9]
-;
-
-NUMBER
-:
-	(
-		DIGIT
-	)+
-;
-
-STRING
-:
-	[a-zA-Z_][a-zA-Z0-9_]*
-;
-
-VAR
-:
-    STRING
-;
-
-
-OPENP
-:
-    '('
-;
-
-CLOSEP
-:
-    ')'
-;
-
-END_DECL
-:
-    ';'
-;
-
-OPENB
-:
-	'['
-;
-
-CLOSEB
-:
-	']'
-;
 
 //variables
-//VAR_TYPE
-//:
-//   INPUT_VAR
-//    |OUTPUT_VAR
-//;
+VAR_TYPE
+:
+     INPUT_VAR
+    |OUTPUT_VAR
+;
 
 INPUT_VAR
 :
@@ -494,7 +448,57 @@ OUTPUT_VAR
     'Output'
 ;
 
+
 //Set Types
+SET_TYPE
+:
+    ARRAY
+    |STACK
+;
+
+
+
+OP
+:
+    CONC
+    |UNION
+    |INTERSECTION
+    |ASSIGNMENT
+    |DUMP
+    |REVERSE
+    |SELECT_SET_ELEM
+    |SELECT_N_SET_ELEMS
+    |RANGE
+;
+
+RANGE
+:
+    OPENB NUMBER ',' NUMBER CLOSEB
+;
+
+DUMP
+:
+    '.dump' OPENP CLOSEP
+;
+
+SELECT_SET_ELEM
+:
+    OPENB NUMBER CLOSEB
+;
+
+SELECT_N_SET_ELEMS
+:
+    STRING OPENP NUMBER CLOSEP
+;
+
+
+ASSIGNMENT
+:
+    '='
+;
+
+
+
 ARRAY
 :
     'array'
@@ -503,12 +507,6 @@ ARRAY
 STACK
 :
     'stack'
-;
-
-SET_TYPE
-:
-    ARRAY
-    |STACK
 ;
 
 //operations
@@ -527,48 +525,12 @@ INTERSECTION
     'int'
 ;
 
-ASSIGNMENT
-:
-    '='
-;
-
-DUMP
-:
-    '.dump' OPENP CLOSEP
-;
 
 REVERSE
 :
     '\''
 ;
 
-SELECT_SET_ELEM
-:
-    OPENB NUMBER CLOSEB
-;
-
-SELECT_N_SET_ELEMS
-:
-    STRING OPENP NUMBER CLOSEP
-;
-
-RANGE
-:
-    OPENB NUMBER ',' NUMBER CLOSEB
-;
-
-OP
-:
-    CONC
-    |UNION
-    |INTERSECTION
-    |ASSIGNMENT
-    |DUMP
-    |REVERSE
-    |SELECT_SET_ELEM
-    |SELECT_N_SET_ELEMS
-    |RANGE
-;
 
 DSLWS
 :
@@ -584,6 +546,59 @@ DSLLINE_COMMENT
 :
     '//' ~[\r\n]* -> skip
 ;
+
+OPENP
+:
+    '('
+;
+
+CLOSEP
+:
+    ')'
+;
+
+DSL_SEMI
+:
+    ';'
+;
+
+OPENB
+:
+	'['
+;
+
+CLOSEB
+:
+	']'
+;
+
+VAR
+:
+    STRING
+;
+
+STRING
+:
+	[a-zA-Z_][a-zA-Z0-9_]*
+;
+
+NUMBER
+:
+	(
+		DIGIT
+	)+
+;
+
+DIGIT
+:
+    [0-9]
+;
+
+DSL_ASSIGN
+:
+    '='
+;
+
 
 
 

@@ -1,4 +1,9 @@
-lexer grammar DSL_Lexer;
+lexer grammar DSLLexer;
+
+//tokens {
+//	WHITESPACE_CHANNEL,
+//	COMMENTS_CHANNEL
+//}
 
 //Java
 // §3.9 Keywords
@@ -344,6 +349,8 @@ BITAND          : '&';
 BITOR           : '|';
 CARET           : '^';
 MOD             : '%';
+COLONCOLON      : '::';
+ARROW           : '->';
 
 ADD_ASSIGN      : '+=';
 SUB_ASSIGN      : '-=';
@@ -403,20 +410,21 @@ COMMENT
     :   '/*' .*? '*/' -> skip
     ;
 
+
 LINE_COMMENT
     :   '//' ~[\r\n]* -> skip
     ;
 
-//-------------------------------------------------
+//--------------------- DSL ----------------------------
 
-DSLBEGIN
+DSLBegin
 :
     '/*@SETDSL' -> pushMode( DSL )
 ;
 
 mode DSL;
 
-DSLEND
+DSLEnd
 :
     '*/' -> popMode
 ;
@@ -435,7 +443,7 @@ NUMBER
 
 STRING
 :
-	[a-zA-z] [a-zA-Z0-9]+
+	[a-zA-Z_][a-zA-Z0-9_]*
 ;
 
 VAR
@@ -470,6 +478,12 @@ CLOSEB
 ;
 
 //variables
+//VAR_TYPE
+//:
+//   INPUT_VAR
+//    |OUTPUT_VAR
+//;
+
 INPUT_VAR
 :
     'Input'
@@ -478,12 +492,6 @@ INPUT_VAR
 OUTPUT_VAR
 :
     'Output'
-;
-
-VAR_TYPE
-:
-    INPUT_VAR
-    |OUTPUT_VAR
 ;
 
 //Set Types
@@ -519,14 +527,14 @@ INTERSECTION
     'int'
 ;
 
-ASSIGMENT
+ASSIGNMENT
 :
     '='
 ;
 
 DUMP
 :
-    '.dump'OPENP CLOSEP
+    '.dump' OPENP CLOSEP
 ;
 
 REVERSE
@@ -554,7 +562,7 @@ OP
     CONC
     |UNION
     |INTERSECTION
-    |ASSIGMENT
+    |ASSIGNMENT
     |DUMP
     |REVERSE
     |SELECT_SET_ELEM
@@ -567,13 +575,15 @@ DSLWS
     [ \t\r\n\u000C]+ -> skip
 ;
 
-DSLCOMMENT
-:
-    '/*' .*? '*/'  -> skip
-;
+//DSLCOMMENT
+//:
+//    '/*' .*? '*/'  -> skip
+//;
 
 DSLLINE_COMMENT
 :
     '//' ~[\r\n]* -> skip
 ;
+
+
 

@@ -25,8 +25,13 @@
       <file leaf-file-name="DSLParser.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DSLParser.g4">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="243">
               <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+=======
+            <state relative-caret-position="154">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+>>>>>>> origin/master
               <folding />
             </state>
           </provider>
@@ -35,8 +40,13 @@
       <file leaf-file-name="DSLLexer.g4" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DSLLexer.g4">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="56">
               <caret line="521" column="1" selection-start-line="521" selection-start-column="1" selection-end-line="521" selection-end-column="1" />
+=======
+            <state relative-caret-position="430">
+              <caret line="596" column="0" selection-start-line="596" selection-start-column="0" selection-end-line="599" selection-end-column="1" />
+>>>>>>> origin/master
               <folding />
             </state>
           </provider>
@@ -510,16 +520,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DSLParser.g4">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="243">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+=======
+        <state relative-caret-position="154">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+>>>>>>> origin/master
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DSLLexer.g4">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="56">
           <caret line="521" column="1" selection-start-line="521" selection-start-column="1" selection-end-line="521" selection-end-column="1" />
+=======
+        <state relative-caret-position="430">
+          <caret line="596" column="0" selection-start-line="596" selection-start-column="0" selection-end-line="599" selection-end-column="1" />
+>>>>>>> origin/master
           <folding />
         </state>
       </provider>

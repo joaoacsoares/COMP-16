@@ -4,23 +4,6 @@ options{
     tokenVocab = DSLLexer;
 }
 
-//DSL
-
-dsl : DSLBegin ( expr )* DSLEnd;
-
-expr: comment
-     | declaration
-     | dslAssignment
-     ;
-
-declaration: (INPUT_VAR | OUTPUT_VAR) VAR (dslAssignment)? END_DECL;
-
-dslAssignment : ASSIGMENT ( VAR | instr );
-
-instr : VAR OP VAR;
-
-comment: DSLLINE_COMMENT;
-
 
 //JAVA
 /*
@@ -1365,3 +1348,26 @@ castExpression
 	|	LPAREN referenceType additionalBound* RPAREN unaryExpressionNotPlusMinus
 	|	LPAREN referenceType additionalBound* RPAREN lambdaExpression
 	;
+
+
+//DSL
+
+dsl:
+        DSLBEGIN line* DSLEND;
+
+line:
+        declaration
+        |dslAssignment;
+
+declaration:
+        VAR_TYPE VAR DSL_SEMI;
+
+dslAssignment:
+    leftSide DSL_ASSIGN rightSide DSL_SEMI;
+
+leftSide:
+    VAR;
+
+rightSide:
+    VAR;
+

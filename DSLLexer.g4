@@ -406,9 +406,9 @@ ELLIPSIS : '...';
 WS  :  [ \t\r\n\u000C]+ -> skip
     ;
 
-COMMENT
-    :   '/*' .*? '*/' -> skip
-    ;
+//COMMENT
+//    :   '/*' .*? '*/' -> skip
+//    ;
 
 
 LINE_COMMENT
@@ -417,72 +417,56 @@ LINE_COMMENT
 
 //--------------------- DSL ----------------------------
 
-DSLBegin
+DSLBEGIN
 :
     '/*@SETDSL' -> pushMode( DSL )
 ;
 
 mode DSL;
 
-DSLEnd
+//BEGIN_CHANGES
+
+DSL_ASSIGN          : '=';
+DSL_GT              : '>';
+DSL_LT              : '<';
+DSL_BANG            : '!';
+DSL_TILDE           : '~';
+DSL_QUESTION        : '?';
+DSL_COLON           : ':';
+DSL_EQUAL           : '==';
+DSL_LE              : '<=';
+DSL_GE              : '>=';
+DSL_NOTEQUAL        : '!=';
+DSL_AND             : '&&';
+DSL_OR              : '||';
+DSL_INC             : '++';
+DSL_DEC             : '--';
+DSL_ADD             : '+';
+DSL_SUB             : '-';
+DSL_MUL             : '*';
+DSL_DIV             : '/';
+DSL_BITAND          : '&';
+DSL_BITOR           : '|';
+DSL_CARET           : '^';
+DSL_MOD             : '%';
+DSL_COLONCOLON      : '::';
+DSL_ARROW           : '->';
+
+//END_CHANGES
+
+
+DSLEND
 :
     '*/' -> popMode
 ;
 
-DIGIT
-:
-    [0-9]
-;
-
-NUMBER
-:
-	(
-		DIGIT
-	)+
-;
-
-STRING
-:
-	[a-zA-Z_][a-zA-Z0-9_]*
-;
-
-VAR
-:
-    STRING
-;
-
-
-OPENP
-:
-    '('
-;
-
-CLOSEP
-:
-    ')'
-;
-
-END_DECL
-:
-    ';'
-;
-
-OPENB
-:
-	'['
-;
-
-CLOSEB
-:
-	']'
-;
 
 //variables
-//VAR_TYPE
-//:
-//   INPUT_VAR
-//    |OUTPUT_VAR
-//;
+VAR_TYPE
+:
+     INPUT_VAR
+    |OUTPUT_VAR
+;
 
 INPUT_VAR
 :
@@ -494,7 +478,50 @@ OUTPUT_VAR
     'Output'
 ;
 
+
 //Set Types
+SET_TYPE
+:
+    ARRAY
+    |STACK
+;
+
+
+
+OP
+:
+    CONC
+    |UNION
+    |INTERSECTION
+    |ASSIGNMENT
+    |DUMP
+    |REVERSE
+    |SELECT_SET_ELEM
+    |SELECT_N_SET_ELEMS
+    |RANGE
+;
+
+RANGE
+:
+    OPENB NUMBER ',' NUMBER CLOSEB
+;
+
+DUMP
+:
+    '.dump' OPENP CLOSEP
+;
+
+SELECT_SET_ELEM
+:
+    OPENB NUMBER CLOSEB
+;
+
+SELECT_N_SET_ELEMS
+:
+    STRING OPENP NUMBER CLOSEP
+;
+
+
 ARRAY
 :
     'array'
@@ -503,12 +530,6 @@ ARRAY
 STACK
 :
     'stack'
-;
-
-SET_TYPE
-:
-    ARRAY
-    |STACK
 ;
 
 //operations
@@ -527,48 +548,12 @@ INTERSECTION
     'int'
 ;
 
-ASSIGNMENT
-:
-    '='
-;
-
-DUMP
-:
-    '.dump' OPENP CLOSEP
-;
 
 REVERSE
 :
     '\''
 ;
 
-SELECT_SET_ELEM
-:
-    OPENB NUMBER CLOSEB
-;
-
-SELECT_N_SET_ELEMS
-:
-    STRING OPENP NUMBER CLOSEP
-;
-
-RANGE
-:
-    OPENB NUMBER ',' NUMBER CLOSEB
-;
-
-OP
-:
-    CONC
-    |UNION
-    |INTERSECTION
-    |ASSIGNMENT
-    |DUMP
-    |REVERSE
-    |SELECT_SET_ELEM
-    |SELECT_N_SET_ELEMS
-    |RANGE
-;
 
 DSLWS
 :
@@ -584,6 +569,54 @@ DSLLINE_COMMENT
 :
     '//' ~[\r\n]* -> skip
 ;
+
+OPENP
+:
+    '('
+;
+
+CLOSEP
+:
+    ')'
+;
+
+DSL_SEMI
+:
+    ';'
+;
+
+OPENB
+:
+	'['
+;
+
+CLOSEB
+:
+	']'
+;
+
+VAR
+:
+    STRING
+;
+
+STRING
+:
+	[a-zA-Z_][a-zA-Z0-9_]*
+;
+
+NUMBER
+:
+	(
+		DIGIT
+	)+
+;
+
+DIGIT
+:
+    [0-9]
+;
+
 
 
 

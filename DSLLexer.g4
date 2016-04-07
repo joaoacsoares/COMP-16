@@ -424,7 +424,6 @@ DSLBEGIN
 
 mode DSL;
 
-<<<<<<< HEAD
 //BEGIN_CHANGES
 
 DSL_ASSIGN          : '=';
@@ -455,15 +454,12 @@ DSL_ARROW           : '->';
 
 //END_CHANGES
 
-=======
->>>>>>> origin/master
 
 DSLEND
 :
     '*/' -> popMode
 ;
 
-<<<<<<< HEAD
 
 //variables
 VAR_TYPE
@@ -524,75 +520,6 @@ SELECT_N_SET_ELEMS
 :
     STRING OPENP NUMBER CLOSEP
 ;
-=======
-
-//variables
-VAR_TYPE
-:
-     INPUT_VAR
-    |OUTPUT_VAR
-;
-
-INPUT_VAR
-:
-    'Input'
-;
-
-OUTPUT_VAR
-:
-    'Output'
-;
-
-
-//Set Types
-SET_TYPE
-:
-    ARRAY
-    |STACK
-;
-
-
-
-OP
-:
-    CONC
-    |UNION
-    |INTERSECTION
-    |ASSIGNMENT
-    |DUMP
-    |REVERSE
-    |SELECT_SET_ELEM
-    |SELECT_N_SET_ELEMS
-    |RANGE
-;
-
-RANGE
-:
-    OPENB NUMBER ',' NUMBER CLOSEB
-;
-
-DUMP
-:
-    '.dump' OPENP CLOSEP
-;
-
-SELECT_SET_ELEM
-:
-    OPENB NUMBER CLOSEB
-;
-
-SELECT_N_SET_ELEMS
-:
-    STRING OPENP NUMBER CLOSEP
-;
-
-
-ASSIGNMENT
-:
-    '='
-;
-
->>>>>>> origin/master
 
 
 ARRAY
@@ -676,7 +603,6 @@ VAR
 STRING
 :
 	[a-zA-Z_][a-zA-Z0-9_]*
-<<<<<<< HEAD
 ;
 
 NUMBER
@@ -689,25 +615,6 @@ NUMBER
 DIGIT
 :
     [0-9]
-=======
-;
-
-NUMBER
-:
-	(
-		DIGIT
-	)+
-;
-
-DIGIT
-:
-    [0-9]
-;
-
-DSL_ASSIGN
-:
-    '='
->>>>>>> origin/master
 ;
 
 

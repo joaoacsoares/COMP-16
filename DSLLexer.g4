@@ -426,6 +426,15 @@ mode DSL;
 
 //BEGIN_CHANGES
 
+//Keywords
+
+INPUT               : 'Input';
+OUTPUT              : 'Output';
+SET                 : 'set';
+
+
+//Operators
+
 DSL_ASSIGN          : '=';
 DSL_GT              : '>';
 DSL_LT              : '<';
@@ -458,24 +467,6 @@ DSL_ARROW           : '->';
 DSLEND
 :
     '*/' -> popMode
-;
-
-
-//variables
-VAR_TYPE
-:
-     INPUT_VAR
-    |OUTPUT_VAR
-;
-
-INPUT_VAR
-:
-    'Input'
-;
-
-OUTPUT_VAR
-:
-    'Output'
 ;
 
 

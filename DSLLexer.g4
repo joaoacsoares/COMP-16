@@ -424,19 +424,7 @@ DSLBEGIN
 
 mode DSL;
 
-//BEGIN_CHANGES
-
-//Keywords
-
-INPUT               : 'Input';
-OUTPUT              : 'Output';
-SET                 : 'set';
-
-
-//Operators
-
-DSL_ASSIGN          : '=';
-DSL_GT              : '>';
+/*DSL_GT              : '>';
 DSL_LT              : '<';
 DSL_BANG            : '!';
 DSL_TILDE           : '~';
@@ -459,14 +447,26 @@ DSL_BITOR           : '|';
 DSL_CARET           : '^';
 DSL_MOD             : '%';
 DSL_COLONCOLON      : '::';
-DSL_ARROW           : '->';
+DSL_ARROW           : '->';*/
+DSL_ASSIGN          : '=';
+DSLEND              :'*/' -> popMode;
 
-//END_CHANGES
 
-
-DSLEND
+//variables
+VAR_TYPE
 :
-    '*/' -> popMode
+     INPUT_VAR
+    |OUTPUT_VAR
+;
+
+INPUT_VAR
+:
+    'Input'
+;
+
+OUTPUT_VAR
+:
+    'Output'
 ;
 
 
@@ -530,7 +530,7 @@ CONC
 
 UNION
 :
-    '+'
+    'union'
 ;
 
 INTERSECTION

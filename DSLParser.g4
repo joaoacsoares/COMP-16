@@ -1357,21 +1357,26 @@ dsl:
 
 line:
         declaration
-        |dslAssignment;
+        |dslAssignment; // (...)
 
 declaration:
-        var_type VAR DSL_SEMI;
+        VAR_TYPE VAR DSL_SEMI;
 
-var_type:
-        INPUT | OUTPUT;
+complexOperation:
+    VAR (OP VAR)+;
 
-dslAssignment:
-    leftSide DSL_ASSIGN rightSide DSL_SEMI;
+simpleOperation:
+    VAR OP;
 
 leftSide:
     VAR;
 
 rightSide:
-    VAR;
+    VAR
+    |simpleOperation
+    |complexOperation;
+
+dslAssignment:
+    leftSide DSL_ASSIGN rightSide DSL_SEMI;
 
 

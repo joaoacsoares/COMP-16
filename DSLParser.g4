@@ -1357,7 +1357,8 @@ dsl:
 
 line:
         declaration
-        |dslAssignment; // (...)
+        |dslAssignment
+        |print; // (...)
 
 declaration:
         VAR_TYPE VAR DSL_SEMI;
@@ -1379,4 +1380,7 @@ rightSide:
 dslAssignment:
     leftSide DSL_ASSIGN rightSide DSL_SEMI;
 
+print:
+    VAR DUMP DSL_SEMI
+;
 

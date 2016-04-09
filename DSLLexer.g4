@@ -473,7 +473,7 @@ OUTPUT_VAR
 //Set Types
 SET_TYPE
 :
-    ARRAY
+    SET
     |STACK
 ;
 
@@ -511,14 +511,14 @@ SELECT_N_SET_ELEMS
 ;
 
 
-ARRAY
+SET
 :
-    'array'
+    'Set' OPENP NUMBER CLOSEP
 ;
 
 STACK
 :
-    'stack'
+    'Stack' OPENP NUMBER CLOSEP
 ;
 
 //operations

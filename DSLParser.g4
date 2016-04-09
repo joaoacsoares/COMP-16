@@ -1358,10 +1358,11 @@ dsl:
 line:
         declaration
         |dslAssignment
-        |print; // (...)
+        |print
+        |array; // (...)
 
 declaration:
-        VAR_TYPE VAR DSL_SEMI;
+        VAR_TYPE VAR (DSL_ASSIGN (SET_TYPE | rightSide))? DSL_SEMI;
 
 complexOperation:
     VAR (OP VAR)+;
@@ -1371,6 +1372,10 @@ simpleOperation:
 
 leftSide:
     VAR;
+
+array:
+    SET_TYPE
+;
 
 rightSide:
     VAR

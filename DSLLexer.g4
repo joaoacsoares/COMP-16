@@ -530,7 +530,7 @@ CONC
 
 UNION
 :
-    'union'
+    '+'
 ;
 
 INTERSECTION

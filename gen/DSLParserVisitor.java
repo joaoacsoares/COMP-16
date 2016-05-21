@@ -1,4 +1,4 @@
-// Generated from D:/IntelliJ/COMP\DSLParser.g4 by ANTLR 4.5.1
+// Generated from D:/IntelliJ/COMP/grammar\DSLParser.g4 by ANTLR 4.5.1
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -9,42 +9,6 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  * operations with no return type.
  */
 public interface DSLParserVisitor<T> extends ParseTreeVisitor<T> {
-	/**
-	 * Visit a parse tree produced by {@link DSLParser#dsl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDsl(DSLParser.DslContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link DSLParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExpr(DSLParser.ExprContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link DSLParser#declaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDeclaration(DSLParser.DeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link DSLParser#dslAssignment}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDslAssignment(DSLParser.DslAssignmentContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link DSLParser#instr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInstr(DSLParser.InstrContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link DSLParser#comment}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitComment(DSLParser.CommentContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link DSLParser#literal}.
 	 * @param ctx the parse tree
@@ -1461,4 +1425,64 @@ public interface DSLParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCastExpression(DSLParser.CastExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DSLParser#dsl}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDsl(DSLParser.DslContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DSLParser#line}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLine(DSLParser.LineContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DSLParser#declaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeclaration(DSLParser.DeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DSLParser#complexOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComplexOperation(DSLParser.ComplexOperationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DSLParser#simpleOperation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSimpleOperation(DSLParser.SimpleOperationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DSLParser#leftSide}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLeftSide(DSLParser.LeftSideContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DSLParser#array}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArray(DSLParser.ArrayContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DSLParser#rightSide}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRightSide(DSLParser.RightSideContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DSLParser#dslAssignment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDslAssignment(DSLParser.DslAssignmentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DSLParser#print}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrint(DSLParser.PrintContext ctx);
 }

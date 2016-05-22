@@ -4,6 +4,7 @@
 
  package compiler;
 
+import data.DSLOperation;
 import grammar_gen.*;
 
 import java.io.File;
@@ -49,7 +50,10 @@ public class Main {
 
         for(DSLBlock b : representation)
         {
-            b.print();
+            for(DSLOperation op : b.getBlockOps())
+            {
+                op.print();
+            }
         }
         if(listener.getErrors() > 0)
         {

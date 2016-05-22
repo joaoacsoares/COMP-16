@@ -9,6 +9,8 @@ public class DSLBlock {
     private int startLine;
     private int finishLine;
     private ArrayList<DSLVar> blockVariables;
+    private ArrayList<DSLOperation> blockOps;
+
 
 
 
@@ -16,6 +18,7 @@ public class DSLBlock {
         this.startLine = st;
         this.finishLine = fn;
         blockVariables = new ArrayList<DSLVar>();
+        blockOps = new ArrayList<DSLOperation>();
     }
 
     public int getStartLine() {
@@ -24,7 +27,7 @@ public class DSLBlock {
 
     public void addVar(DSLVar v)
     {
-        System.out.println("Var " + v.name + " of type " + v.IOtype + " added");
+        //System.out.println("Var " + v.name + " of type " + v.IOtype + " added");
         blockVariables.add(v);
     }
 
@@ -41,10 +44,25 @@ public class DSLBlock {
         return blockVariables;
     }
 
+    public ArrayList<DSLOperation> getBlockOps()
+    {
+        return blockOps;
+    }
+
+
     public void useVar(int index)
     {
         blockVariables.get(index).markAsUsed();
     }
+
+    public void addOp(DSLOperation op)
+    {
+        //System.out.println("Operation " + op.getType() + " in line " + op.getLine() + " added");
+        blockOps.add(op);
+    }
+
+
+
 
     /**
      * @return the finishLine

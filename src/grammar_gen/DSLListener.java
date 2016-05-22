@@ -4,6 +4,7 @@
 
 package grammar_gen;
 
+import data.DSLOperation;
 import data.DSLVar;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -35,10 +36,6 @@ public class DSLListener extends DSLParserBaseListener {
         DSLBlock b = new DSLBlock(ctx.DSLBEGIN().getSymbol().getLine(), ctx.DSLEND().getSymbol().getLine());
         this.currentBlock = b;
         Main.representation.add(b);
-
-
-
-        //System.out.println(ctx.getText());
     }
 
     @Override public void exitDsl(DSLParser.DslContext ctx) {
@@ -88,7 +85,11 @@ public class DSLListener extends DSLParserBaseListener {
         }
     }
 
-    @Override public void exitDeclaration(DSLParser.DeclarationContext ctx) { }
+    @Override public void exitDeclaration(DSLParser.DeclarationContext ctx) {
+        //System.out.println("operation: line-" + ctx.VAR().getSymbol().getLine() + " type-" + "declaration vars-" + ctx.VAR().getText());
+        DSLOperation tmp = new DSLOperation(ctx.VAR().getSymbol().getLine(), "declaration", ctx.VAR().getText());
+        currentBlock.addOp(tmp);
+    }
 
     @Override public void enterComplexOperation(DSLParser.ComplexOperationContext ctx) {
 
@@ -109,7 +110,18 @@ public class DSLListener extends DSLParserBaseListener {
         }
     }
 
-    @Override public void exitComplexOperation(DSLParser.ComplexOperationContext ctx) { }
+    @Override public void exitComplexOperation(DSLParser.ComplexOperationContext ctx) {
+
+        for(int i = ctx.VAR().size()-1 ; i > 0 ; i--) {
+            //System.out.println("operation: line-" + ctx.OP().get(i - 1).getSymbol().getLine() + " type-" + ctx.OP().get(i - 1).getText() + " vars- " + ctx.VAR().get(i - 1).getText() + " " + ctx.VAR().get(i).getText());
+            String[] aux = new String[2];
+            aux[0] = ctx.VAR().get(i - 1).getText();
+            aux[1] = ctx.VAR().get(i).getText();
+            DSLOperation tmp = new DSLOperation(ctx.OP().get(i - 1).getSymbol().getLine(), ctx.OP().get(i - 1).getText(), aux);
+            currentBlock.addOp(tmp);
+        }
+
+    }
 
     @Override public void enterSimpleOperation(DSLParser.SimpleOperationContext ctx) {
         boolean found = false;
@@ -128,7 +140,11 @@ public class DSLListener extends DSLParserBaseListener {
         }
     }
 
-    @Override public void exitSimpleOperation(DSLParser.SimpleOperationContext ctx) { }
+    @Override public void exitSimpleOperation(DSLParser.SimpleOperationContext ctx) {
+        //System.out.println("operation: line-" + ctx.OP().getSymbol().getLine() + " type-" + ctx.OP().getText() + " vars-" + ctx.VAR().getText());
+        DSLOperation tmp = new DSLOperation(ctx.OP().getSymbol().getLine(),ctx.OP().getText(), ctx.VAR().getText());
+        currentBlock.addOp(tmp);
+    }
 
     @Override public void enterLeftSide(DSLParser.LeftSideContext ctx) {
         boolean found = false;
@@ -167,7 +183,21 @@ public class DSLListener extends DSLParserBaseListener {
         }
     }
 
-    @Override public void exitDslAssignment(DSLParser.DslAssignmentContext ctx) { }
+    @Override public void exitDslAssignment(DSLParser.DslAssignmentContext ctx) {
+
+        String[] aux = new String[2];
+        aux[0] = ctx.leftSide().VAR().getText();
+        if(ctx.rightSide().complexOperation() != null)
+        aux[1] = ctx.rightSide().complexOperation().VAR().get(0).getText();
+        else if(ctx.rightSide().simpleOperation() != null)
+            aux[1] = ctx.rightSide().simpleOperation().VAR().getText();
+        else if (ctx.rightSide().VAR() != null)
+            aux[1] = ctx.rightSide().VAR().getText();
+
+       // System.out.println(aux[0] + aux[1]);
+        DSLOperation tmp = new DSLOperation(ctx.DSL_ASSIGN().getSymbol().getLine(), "assignment", aux);
+        currentBlock.addOp(tmp);
+    }
 
     @Override public void enterPrint(DSLParser.PrintContext ctx) {
         boolean found = false;
@@ -186,7 +216,12 @@ public class DSLListener extends DSLParserBaseListener {
         }
     }
 
-    @Override public void exitPrint(DSLParser.PrintContext ctx) { }
+    @Override public void exitPrint(DSLParser.PrintContext ctx) {
+        //System.out.println("operation: line-" + ctx.DUMP().getSymbol().getLine() + " type-" + "print" + " vars-" + ctx.VAR().getText());
+        DSLOperation tmp = new DSLOperation(ctx.DUMP().getSymbol().getLine(),"print", ctx.VAR().getText());
+        currentBlock.addOp(tmp);
+
+    }
 
     @Override public void enterEveryRule(ParserRuleContext ctx) { }
 

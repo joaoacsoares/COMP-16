@@ -82,6 +82,7 @@ public class DSLListener extends DSLParserBaseListener {
     @Override public void exitDeclaration(DSLParser.DeclarationContext ctx) { }
 
     @Override public void enterComplexOperation(DSLParser.ComplexOperationContext ctx) {
+
         boolean found = false;
         for(TerminalNode x : ctx.VAR()) {
             for (DSLVar v : currentBlock.getBlockVariables()) {
@@ -101,7 +102,19 @@ public class DSLListener extends DSLParserBaseListener {
     @Override public void exitComplexOperation(DSLParser.ComplexOperationContext ctx) { }
 
     @Override public void enterSimpleOperation(DSLParser.SimpleOperationContext ctx) {
+        boolean found = false;
+        for(DSLVar v : currentBlock.getBlockVariables())
+        {
+            if (ctx.VAR().getText().equals(v.name)) {
+                found = true;
+            }
+        }
 
+        if(!found)
+        {
+            System.out.println("Undeclared variable " + ctx.VAR().getText() + " used in line " + ctx.VAR().getSymbol().getLine());
+            errors++;
+        }
     }
 
     @Override public void exitSimpleOperation(DSLParser.SimpleOperationContext ctx) { }
@@ -114,7 +127,10 @@ public class DSLListener extends DSLParserBaseListener {
 
     @Override public void exitArray(DSLParser.ArrayContext ctx) { }
 
-    @Override public void enterRightSide(DSLParser.RightSideContext ctx) { }
+    @Override public void enterRightSide(DSLParser.RightSideContext ctx) {
+
+
+    }
 
     @Override public void exitRightSide(DSLParser.RightSideContext ctx) { }
 
@@ -138,7 +154,7 @@ public class DSLListener extends DSLParserBaseListener {
 
         if(!found)
         {
-            System.out.println("Undeclared variable " + ctx.VAR().getText() + " used in line " + ctx.VAR().getSymbol().getLine());
+            System.out.println("Undeclared variable " + ctx.VAR().getText() + " used in line " + ctx.VAR().getSymbol().getLine() + " as a " + ctx.DUMP().getText() + " operation");
             errors++;
         }
     }

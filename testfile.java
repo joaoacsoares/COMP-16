@@ -1,4 +1,5 @@
 /*@SETDSL
 Input A;
-Input B;
- */
+Input B = C.B;
+C.dump();
+*/

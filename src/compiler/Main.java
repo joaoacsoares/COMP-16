@@ -19,8 +19,9 @@ import java.util.Scanner;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import grammar_gen.*;
-
+import data.DSLBlock;
 public class Main {
+    public static ArrayList<DSLBlock> representation;
     public static void main( String[] args) throws Exception
     {
         /*String inputFile = null;
@@ -40,9 +41,16 @@ public class Main {
         DSLParser parser = new DSLParser( tokens );
         ParseTree tree = parser.dsl();
         ParseTreeWalker walker = new ParseTreeWalker();
+
+
+        representation = new ArrayList<DSLBlock>();
         DSLListener listener = new DSLListener();
         walker.walk( listener, tree );
 
+        for(DSLBlock b : representation)
+        {
+            b.print();
+        }
         if(listener.getErrors() > 0)
         {
             System.out.println("There are syntax errors, on your code!");

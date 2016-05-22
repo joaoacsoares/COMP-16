@@ -1,0 +1,49 @@
+package data;
+
+import java.util.ArrayList;
+
+/**
+ * Created by Joao on 22/05/2016.
+ */
+public class DSLBlock {
+    private int startLine;
+    private int finishLine;
+    private ArrayList<DSLVar> blockVariables;
+
+
+
+    public DSLBlock(int st, int fn) {
+        this.startLine = st;
+        this.finishLine = fn;
+        blockVariables = new ArrayList<DSLVar>();
+    }
+
+    public int getStartLine() {
+        return startLine;
+    }
+
+    public void addVar(DSLVar v)
+    {
+        System.out.println("Var " + v.name + " of type " + v.type + " added");
+        blockVariables.add(v);
+    }
+
+    public ArrayList<DSLVar> getBlockVariables()
+    {
+        return blockVariables;
+    }
+
+    /**
+     * @return the finishLine
+     */
+    public int getFinishLine() {
+        return finishLine;
+    }
+    public void print() {
+        System.out.println("Block starting at line: " + startLine
+                + " and ending at " + finishLine );
+
+    }
+
+
+}

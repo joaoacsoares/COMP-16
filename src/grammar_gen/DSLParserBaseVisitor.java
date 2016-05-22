@@ -1,4 +1,5 @@
-package grammar_gen;// Generated from D:/IntelliJ/COMP/grammar\DSLParser.g4 by ANTLR 4.5.1
+package grammar_gen;
+// Generated from D:/IntelliJ/COMP/grammar\DSLParser.g4 by ANTLR 4.5.1
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -1668,6 +1669,9 @@ public class DSLParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impleme
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+
+	/***************************************************************************** DSL *********************************************************************************/
+
 	@Override public T visitDsl(DSLParser.DslContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

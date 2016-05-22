@@ -4,9 +4,7 @@
 
  package compiler;
 
-import walker.*;
-import grammar_gen.DSLLexer;
-import grammar_gen.DSLParser;
+import grammar_gen.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,12 +18,12 @@ import java.util.HashMap;
 import java.util.Scanner;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
-
+import grammar_gen.*;
 
 public class Main {
     public static void main( String[] args) throws Exception
     {
-        String inputFile = null;
+        /*String inputFile = null;
         String outputFile = null;
 
         if(args.length > 1)
@@ -35,13 +33,19 @@ public class Main {
         } else {
             System.out.println("Wrong use of program! Please try again!");
             System.exit(-1);
-        }
+        }*/
 
-        DSLLexer lexer = new DSLLexer( new ANTLRFileStream(args[0]));
+        DSLLexer lexer = new DSLLexer( new ANTLRFileStream("testfile.java"));
         CommonTokenStream tokens = new CommonTokenStream( lexer );
         DSLParser parser = new DSLParser( tokens );
         ParseTree tree = parser.dsl();
         ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk( new DSLWalker(), tree );
+        DSLListener listener = new DSLListener();
+        walker.walk( listener, tree );
+
+        if(listener.getErrors() > 0)
+        {
+            System.out.println("There are syntax errors, on your code!");
+        }
     }
 }

@@ -69,12 +69,18 @@ public class DSLListener extends DSLParserBaseListener {
     @Override public void exitLine(DSLParser.LineContext ctx) { }
 
     @Override public void enterDeclaration(DSLParser.DeclarationContext ctx) {
-        String name, type;
+        String name, type,datatype;
 
         name = ctx.VAR().getText();
         type = ctx.VAR_TYPE().getText();
+        DSLVar v;
+        if(ctx.SET_TYPE() != null) {
+            datatype = ctx.SET_TYPE().getText();
+            v = new DSLVar(name,type,datatype);
+        }
 
-        DSLVar v = new DSLVar(name,type);
+        else{v = new DSLVar(name,type);}
+
 
         if(currentBlock.varNameExists(name)){
             System.out.println("Variable " + name +" redeclaration " + " in line " + ctx.VAR().getSymbol().getLine());

@@ -13,7 +13,16 @@ public class DSLVar {
     {
         this.name = n;
         this.IOtype = t;
-        this.dataType = "Set";
+        this.dataType = "";
+        this.used = false;
+
+    }
+
+    public DSLVar (String n, String t, String dt)
+    {
+        this.name = n;
+        this.IOtype = t;
+        this.dataType = dt;
         this.used = false;
 
     }
@@ -24,5 +33,10 @@ public class DSLVar {
 
     public boolean wasUsed(){
         return used;
+    }
+
+    public void print()
+    {
+        System.out.println("Variable " + name + " IOType : " + IOtype + " dataType: " + dataType);
     }
 }

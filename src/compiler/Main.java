@@ -5,6 +5,7 @@
  package compiler;
 
 import data.DSLOperation;
+import data.DSLVar;
 import grammar_gen.*;
 
 import java.io.File;
@@ -53,6 +54,10 @@ public class Main {
             for(DSLOperation op : b.getBlockOps())
             {
                 op.print();
+            }
+            for(DSLVar v : b.getBlockVariables())
+            {
+                v.print();
             }
         }
         if(listener.getErrors() > 0)

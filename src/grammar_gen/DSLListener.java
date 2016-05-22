@@ -76,7 +76,14 @@ public class DSLListener extends DSLParserBaseListener {
         type = ctx.VAR_TYPE().getText();
 
         DSLVar v = new DSLVar(name,type);
-        currentBlock.addVar(v);
+
+        if(currentBlock.varNameExists(name)){
+            System.out.println("Variable " + name +" redeclaration " + " in line " + ctx.VAR().getSymbol().getLine());
+            errors++;
+        }
+        else{
+            currentBlock.addVar(v);
+        }
     }
 
     @Override public void exitDeclaration(DSLParser.DeclarationContext ctx) { }

@@ -28,6 +28,14 @@ public class DSLBlock {
         blockVariables.add(v);
     }
 
+    public boolean varNameExists(String n)
+    {
+        for(DSLVar v : blockVariables){
+            if(v.name.equals(n)) return true;
+        }
+        return false;
+    }
+
     public ArrayList<DSLVar> getBlockVariables()
     {
         return blockVariables;

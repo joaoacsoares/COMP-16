@@ -96,7 +96,6 @@ public class DSLListener extends DSLParserBaseListener {
             }
             found = false;
         }
-
     }
 
     @Override public void exitComplexOperation(DSLParser.ComplexOperationContext ctx) { }

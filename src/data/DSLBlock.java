@@ -24,7 +24,7 @@ public class DSLBlock {
 
     public void addVar(DSLVar v)
     {
-        System.out.println("Var " + v.name + " of type " + v.type + " added");
+        System.out.println("Var " + v.name + " of type " + v.IOtype + " added");
         blockVariables.add(v);
     }
 

@@ -51,7 +51,7 @@ public class DSLListener extends DSLParserBaseListener {
     }
 
     @Override public void enterLine(DSLParser.LineContext ctx) {
-       if (ctx.declaration() != null && !ctx.declaration().DSL_SEMI().getText().equals(";")){
+        if (ctx.declaration() != null && !ctx.declaration().DSL_SEMI().getText().equals(";")){
             System.out.println("Missing semicolon (';') at the end of the line " + ctx.declaration().VAR_TYPE().getSymbol().getLine() );
             errors++;
         }
@@ -126,7 +126,22 @@ public class DSLListener extends DSLParserBaseListener {
 
     @Override public void exitSimpleOperation(DSLParser.SimpleOperationContext ctx) { }
 
-    @Override public void enterLeftSide(DSLParser.LeftSideContext ctx) { }
+    @Override public void enterLeftSide(DSLParser.LeftSideContext ctx) {
+        boolean found = false;
+        for(DSLVar v : currentBlock.getBlockVariables())
+        {
+            if (ctx.VAR().getText().equals(v.name)) {
+                found = true;
+            }
+        }
+
+        if(!found)
+        {
+            System.out.println("Undeclared variable " + ctx.VAR().getText() + " used in line " + ctx.VAR().getSymbol().getLine());
+            errors++;
+        }
+
+    }
 
     @Override public void exitLeftSide(DSLParser.LeftSideContext ctx) { }
 

@@ -144,6 +144,21 @@ public class DSLListener extends DSLParserBaseListener {
             System.out.println("Undeclared variable " + ctx.VAR().getText() + " used in line " + ctx.VAR().getSymbol().getLine());
             errors++;
         }
+
+        String op = ctx.OP().getText();
+
+        if(op.equals(".")){
+            System.out.println("Concatenation misses right side var in line " + ctx.VAR().getSymbol().getLine());
+            errors++;
+        }
+        else if(op.equals("+")){
+            System.out.println("Union misses right side var in line " + ctx.VAR().getSymbol().getLine());
+            errors++;
+        }
+        else if(op.equals("int")){
+            System.out.println("Intersection misses right side var in line " + ctx.VAR().getSymbol().getLine());
+            errors++;
+        }
     }
 
     @Override public void exitSimpleOperation(DSLParser.SimpleOperationContext ctx) {

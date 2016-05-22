@@ -41,6 +41,11 @@ public class DSLBlock {
         return blockVariables;
     }
 
+    public void useVar(int index)
+    {
+        blockVariables.get(index).markAsUsed();
+    }
+
     /**
      * @return the finishLine
      */

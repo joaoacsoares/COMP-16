@@ -13,14 +13,12 @@ import data.DSLBlock;
 
 public class DSLListener extends DSLParserBaseListener {
     private int errors;
-    private int warnings;
     private DSLBlock currentBlock;
 
 
 
     public DSLListener() {
         errors = 0;
-        warnings = 0;
 
     }
 
@@ -47,6 +45,10 @@ public class DSLListener extends DSLParserBaseListener {
         //ctx.getStop();
         System.out.println("Exiting DSL Mode - Semantic Analysis Complete");
         System.out.println(errors + " errors were found.");
+
+        for(DSLVar v : currentBlock.getBlockVariables()){
+            if(!v.wasUsed()) System.out.println("Warning : Unused variable " + v.name);
+        }
 
     }
 
@@ -95,6 +97,7 @@ public class DSLListener extends DSLParserBaseListener {
             for (DSLVar v : currentBlock.getBlockVariables()) {
                 if (x.getText().equals(v.name)) {
                     found = true;
+                    currentBlock.useVar(currentBlock.getBlockVariables().indexOf(v));
                 }
             }
             if(!found)
@@ -114,6 +117,7 @@ public class DSLListener extends DSLParserBaseListener {
         {
             if (ctx.VAR().getText().equals(v.name)) {
                 found = true;
+                currentBlock.useVar(currentBlock.getBlockVariables().indexOf(v));
             }
         }
 
@@ -171,6 +175,7 @@ public class DSLListener extends DSLParserBaseListener {
         {
             if (ctx.VAR().getText().equals(v.name)) {
                 found = true;
+                currentBlock.useVar(currentBlock.getBlockVariables().indexOf(v));
             }
         }
 

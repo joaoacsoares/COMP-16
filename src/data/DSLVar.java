@@ -9,6 +9,12 @@ public class DSLVar {
     public String dataType;
     private boolean used;
 
+
+    public DSLVar()
+    {
+        
+    }
+
     public DSLVar (String n, String t)
     {
         this.name = n;

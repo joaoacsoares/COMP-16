@@ -71,22 +71,57 @@ public class DSLOperation {
 
         for(DSLVar b : vars)
         {
-            pOp += ("//" + b.name + "//" + type);
+            pOp += ("//" + b.name + "//" + type + "//");
         }
-        if(result != "")
-        {
-            pOp += "//$" + result;
-        }
+
         //pOp += ("//" + type);
-        pOp += "" ;
-        //System.out.print(pOp);
+        //pOp += "" ;
+        //System.out.println(pOp);
 
     }
 
     public void processToJava(){
-        String[] words = pOp.split("//");
-        for(String w : words)
-            System.out.println(w);
+        System.out.println(pOp);
+        for(String s : pOp.split("<a>"))
+        {
+            if(s.length() >1)
+            {
+                //System.out.println(s);
+                String[] words = s.split("//");
+                //System.out.println(words[2]);
+                switch (words[2])
+                {
+                    case "declaration":
+                        javacode = "ArrayList<int> " + words[1] +";";
+                        //System.out.println(javacode);
+                        break;
+                    case ".":
+                        javacode = ".";
+                        System.out.println(javacode);
+                        break;
+                    case "+":
+                        javacode = "+";
+                        System.out.println(javacode);
+                        break;
+                    case "int":
+                        javacode = "int";
+                        System.out.println(javacode);
+                        break;
+                    case "assignment":
+                        javacode = "=";
+                        System.out.println(javacode);
+                        break;
+                    case "declAssi":
+                        javacode = "decl=";
+                        System.out.println(javacode);
+                        break;
+                    default:
+                        System.out.println(words[2]);
+                        break;
+
+                }
+            }
+        }
     }
 
 }

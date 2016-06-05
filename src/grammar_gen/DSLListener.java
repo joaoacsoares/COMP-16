@@ -73,11 +73,11 @@
 
         @Override public void exitLine(DSLParser.LineContext ctx) {
             DSLOperation tmp = new DSLOperation();
-            System.out.println("Exit Line:");
+            //System.out.println("Exit Line:");
             while(!stack.isEmpty()){
-                tmp.setpOp(tmp.getpOp() + stack.pop().getpOp());
+                tmp.setpOp(tmp.getpOp() +"<a>"+ stack.pop().getpOp()+"<a>");
             }
-            System.out.println("AUX : " + tmp.getpOp());
+            //System.out.println("AUX : " + tmp.getpOp());
             currentBlock.addOp(tmp);
         }
 
@@ -115,9 +115,33 @@
                 }
             }
             if(vx != null){
-            DSLOperation tmp = new DSLOperation(ctx.VAR().getSymbol().getLine(), "declaration", vx);
-                tmp.print();
-                stack.push(tmp);
+                if(ctx.DSL_ASSIGN() == null) {
+                    DSLOperation tmp = new DSLOperation(ctx.VAR().getSymbol().getLine(), "declaration", vx);
+                    tmp.print();
+                    stack.push(tmp);
+                }
+                else{
+                    DSLOperation tmp = new DSLOperation(ctx.VAR().getSymbol().getLine(), "declAssi", vx);
+                    if (ctx.SET_TYPE() != null){
+                        tmp.print();
+                        tmp.setpOp(tmp.getpOp() + "//" + ctx.SET_TYPE().getText());
+
+                        stack.push(tmp);
+                    }
+                    else if(ctx.rightSide() != null) {
+                        if(ctx.rightSide().simpleOperation() != null){
+                        }
+                        else if(ctx.rightSide().complexOperation() != null){
+                        }
+                        else if(ctx.rightSide().VAR() != null){
+                            tmp.print();
+                            tmp.setpOp(tmp.getpOp() + "//" + ctx.rightSide().VAR().getText());
+                            stack.push(tmp);
+                        }
+                    }
+                    //tmp.print();
+                    //stack.push(tmp);
+                }
             }
         }
 
@@ -299,18 +323,22 @@
                 aux[1] = ctx.rightSide().VAR().getText();
 
             ArrayList<DSLVar> aux1 = new ArrayList<DSLVar>();
-
+            DSLVar v1 = new DSLVar();
+            aux1.add(v1);
+            aux1.add(v1);
 
 
             for(DSLVar v : currentBlock.getBlockVariables())
             {
                 if(v.name.equals(aux[0]))
                 {
-                    aux1.add(0,v);
+                    aux1.set(0,v);
+                    v.markAsUsed();
                 }
                 else if (v.name.equals(aux[1]))
                 {
-                    aux1.add(1,v);
+                    aux1.set(1,v);
+                    v.markAsUsed();
                 }
             }
 

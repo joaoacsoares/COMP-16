@@ -81,7 +81,7 @@ public class DSLOperation {
     }
 
     public void processToJava(){
-        System.out.println(pOp);
+        //System.out.println(pOp);
         for(String s : pOp.split("<a>"))
         {
             if(s.length() >1)
@@ -97,26 +97,40 @@ public class DSLOperation {
                         break;
                     case ".":
                         javacode = ".";
-                        System.out.println(javacode);
+                        //System.out.println(javacode);
                         break;
                     case "+":
                         javacode = "+";
-                        System.out.println(javacode);
+                        //System.out.println(javacode);
                         break;
                     case "int":
                         javacode = "int";
-                        System.out.println(javacode);
+                        //System.out.println(javacode);
                         break;
                     case "assignment":
                         javacode = "=";
-                        System.out.println(javacode);
+                        //System.out.println(javacode);
                         break;
                     case "declAssi":
                         javacode = "decl=";
-                        System.out.println(javacode);
+                        //System.out.println(javacode);
                         break;
+                    case "'":
+                        javacode = "reverse";
+
+                        //System.out.println(javacode);
+                        break;
+
                     default:
-                        System.out.println(words[2]);
+                        if(words[2].contains("[") && words[2].contains(",") && words[2].contains("]"))
+                        {
+                            javacode = "range";
+                        }
+                        else if (words[2].contains("[") && words[2].contains("]"))
+                        {
+                            javacode = "select";
+                        }
+                        //System.out.println(words[2]);
                         break;
 
                 }

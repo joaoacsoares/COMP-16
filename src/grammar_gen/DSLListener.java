@@ -267,7 +267,20 @@
 
             if (vx != null)
             {
-                DSLOperation tmp = new DSLOperation(ctx.OP().getSymbol().getLine(),ctx.OP().getText(), vx);
+                String xx = "";
+                if(ctx.OP().getText().contains("[") && ctx.OP().getText().contains("]") && ctx.OP().getText().contains(",") )
+                {
+                    xx = "range" + ctx.OP().getText();
+                }
+                else if (ctx.OP().getText().contains("[") && ctx.OP().getText().contains("]"))
+                {
+                    xx = "select" + ctx.OP().getText();
+                }
+                else {
+                    xx = ctx.OP().getText();
+                }
+
+                DSLOperation tmp = new DSLOperation(ctx.OP().getSymbol().getLine(),xx, vx);
                 tmp.print();
                 stack.push(tmp);
             }
@@ -312,44 +325,38 @@
         }
 
         @Override public void exitDslAssignment(DSLParser.DslAssignmentContext ctx) {
+            if(ctx.DSL_ASSIGN() != null) {
+                String[] aux = new String[2];
+                aux[0] = ctx.leftSide().VAR().getText();
+                if (ctx.rightSide().complexOperation() != null)
+                    aux[1] = ctx.rightSide().complexOperation().VAR().get(0).getText();
+                else if (ctx.rightSide().simpleOperation() != null)
+                    aux[1] = ctx.rightSide().simpleOperation().VAR().getText();
+                else if (ctx.rightSide().VAR() != null)
+                    aux[1] = ctx.rightSide().VAR().getText();
 
-            String[] aux = new String[2];
-            aux[0] = ctx.leftSide().VAR().getText();
-            if(ctx.rightSide().complexOperation() != null)
-            aux[1] = ctx.rightSide().complexOperation().VAR().get(0).getText();
-            else if(ctx.rightSide().simpleOperation() != null)
-                aux[1] = ctx.rightSide().simpleOperation().VAR().getText();
-            else if (ctx.rightSide().VAR() != null)
-                aux[1] = ctx.rightSide().VAR().getText();
-
-            ArrayList<DSLVar> aux1 = new ArrayList<DSLVar>();
-            DSLVar v1 = new DSLVar();
-            aux1.add(v1);
-            aux1.add(v1);
+                ArrayList<DSLVar> aux1 = new ArrayList<DSLVar>();
+                DSLVar v1 = new DSLVar();
+                aux1.add(v1);
+                aux1.add(v1);
 
 
-            for(DSLVar v : currentBlock.getBlockVariables())
-            {
-                if(v.name.equals(aux[0]))
-                {
-                    aux1.set(0,v);
-                    v.markAsUsed();
+                for (DSLVar v : currentBlock.getBlockVariables()) {
+                    if (v.name.equals(aux[0])) {
+                        aux1.set(0, v);
+                        v.markAsUsed();
+                    } else if (v.name.equals(aux[1])) {
+                        aux1.set(1, v);
+                        v.markAsUsed();
+                    }
                 }
-                else if (v.name.equals(aux[1]))
-                {
-                    aux1.set(1,v);
-                    v.markAsUsed();
-                }
+
+
+                // System.out.println(aux[0] + aux[1]);
+                DSLOperation tmp = new DSLOperation(ctx.DSL_ASSIGN().getSymbol().getLine(), "assignment", aux1);
+                tmp.print();
+                stack.push(tmp);
             }
-
-
-
-
-
-           // System.out.println(aux[0] + aux[1]);
-            DSLOperation tmp = new DSLOperation(ctx.DSL_ASSIGN().getSymbol().getLine(), "assignment", aux1);
-            tmp.print();
-            stack.push(tmp);
         }
 
         @Override public void enterPrint(DSLParser.PrintContext ctx) {

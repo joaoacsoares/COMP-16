@@ -1,4 +1,4 @@
-package grammar_gen;// Generated from D:/IntelliJ/COMP/grammar\DSLLexer.g4 by ANTLR 4.5.1
+package grammar_gen;// Generated from C:/Users/Joao/Documents/MIEIC/4� Ano/2S/COMP/COMP-16/grammar\DSLLexer.g4 by ANTLR 4.5.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

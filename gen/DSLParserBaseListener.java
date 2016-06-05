@@ -1,4 +1,4 @@
-// Generated from D:/IntelliJ/COMP/grammar\DSLParser.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Joao/Documents/MIEIC/4º Ano/2S/COMP/COMP-16/grammar\DSLParser.g4 by ANTLR 4.5.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;

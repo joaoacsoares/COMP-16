@@ -23,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DSLLexer.g4" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grammar/DSLLexer.g4">
+      <file leaf-file-name="testfile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testfile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="608" column="0" selection-start-line="608" selection-start-column="0" selection-end-line="608" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -36,23 +36,9 @@
       <file leaf-file-name="DSLParser.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grammar/DSLParser.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="1355" column="29" selection-start-line="1355" selection-start-column="29" selection-end-line="1355" selection-end-column="29" />
+            <state relative-caret-position="190">
+              <caret line="1354" column="8" selection-start-line="1354" selection-start-column="8" selection-end-line="1354" selection-end-column="8" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DSLBlock.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/DSLBlock.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
-              <folding>
-                <element signature="method#DSLBlock#0;class#DSLBlock#0" expanded="false" />
-                <element signature="method#addVar#0;class#DSLBlock#0" expanded="false" />
-                <element signature="method#varNameExists#0;class#DSLBlock#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -60,16 +46,18 @@
       <file leaf-file-name="DSLListener.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/grammar_gen/DSLListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="256" column="88" selection-start-line="256" selection-start-column="88" selection-end-line="256" selection-end-column="88" />
+            <state relative-caret-position="14">
+              <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
               <folding>
                 <element signature="method#DSLListener#0;class#DSLListener#0" expanded="false" />
                 <element signature="docComment;method#enterDsl#0;class#DSLListener#0" expanded="false" />
-                <element signature="method#enterDsl#0;class#DSLListener#0" expanded="false" />
+                <element signature="method#enterLine#0;class#DSLListener#0" expanded="false" />
                 <element signature="method#exitLine#0;class#DSLListener#0" expanded="false" />
                 <element signature="method#enterDeclaration#0;class#DSLListener#0" expanded="false" />
-                <element signature="e#5354#5368#0" expanded="false" />
+                <element signature="method#exitDeclaration#0;class#DSLListener#0" expanded="false" />
+                <element signature="e#5432#5446#0" expanded="false" />
                 <element signature="method#enterComplexOperation#0;class#DSLListener#0" expanded="false" />
+                <element signature="method#exitComplexOperation#0;class#DSLListener#0" expanded="false" />
                 <element signature="method#enterSimpleOperation#0;class#DSLListener#0" expanded="false" />
                 <element signature="method#exitSimpleOperation#0;class#DSLListener#0" expanded="false" />
                 <element signature="method#enterLeftSide#0;class#DSLListener#0" expanded="false" />
@@ -77,58 +65,17 @@
                 <element signature="method#enterDslAssignment#0;class#DSLListener#0" expanded="false" />
                 <element signature="method#exitDslAssignment#0;class#DSLListener#0" expanded="false" />
                 <element signature="method#enterPrint#0;class#DSLListener#0" expanded="false" />
-                <marker date="1465154418435" expanded="false" signature="1246:1601" placeholder="{...}" />
-                <marker date="1465154418435" expanded="false" signature="1670:2549" placeholder="{...}" />
-                <marker date="1465154418435" expanded="false" signature="3769:5449" placeholder="{...}" />
-                <marker date="1465154418435" expanded="false" signature="6275:8587" placeholder="{...}" />
-                <marker date="1465154418435" expanded="false" signature="6687:6695" placeholder="&lt;~&gt;" />
-                <marker date="1465154418435" expanded="false" signature="14457:15053" placeholder="{...}" />
+                <element signature="method#exitPrint#0;class#DSLListener#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testfile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testfile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DSLOperation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/DSLOperation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="83" column="10" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="10" />
-              <folding>
-                <element signature="docComment;class#DSLOperation#0" expanded="false" />
-                <element signature="method#DSLOperation#0;class#DSLOperation#0" expanded="false" />
-                <element signature="method#DSLOperation#1;class#DSLOperation#0" expanded="false" />
-                <element signature="method#DSLOperation#3;class#DSLOperation#0" expanded="false" />
-                <element signature="method#getJavacode#0;class#DSLOperation#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DSLVar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/DSLVar.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
+            <state relative-caret-position="48">
+              <caret line="52" column="50" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -166,7 +113,6 @@
         <option value="$PROJECT_DIR$/src/grammar/DSLParser.java" />
         <option value="$PROJECT_DIR$/src/grammar/DSLLexer.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/grammar_gen/DSLLexer.java" />
         <option value="$PROJECT_DIR$/src/walker/DSLWalker.java" />
         <option value="$PROJECT_DIR$/src/grammar_gen/DSLParserBaseVisitor.java" />
         <option value="$PROJECT_DIR$/src/grammar_gen/DSLVisitor.java" />
@@ -174,13 +120,14 @@
         <option value="$PROJECT_DIR$/src/data/Declaration.java" />
         <option value="$PROJECT_DIR$/src/data/DSLDeclaration.java" />
         <option value="$PROJECT_DIR$/src/data/DSLBlock.java" />
-        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
         <option value="$PROJECT_DIR$/src/data/DSLVar.java" />
-        <option value="$PROJECT_DIR$/src/grammar_gen/DSLListener.java" />
         <option value="$PROJECT_DIR$/src/data/DSLOperation.java" />
+        <option value="$PROJECT_DIR$/src/grammar_gen/DSLListener.java" />
+        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
         <option value="$PROJECT_DIR$/testfile.java" />
-        <option value="$PROJECT_DIR$/grammar/DSLParser.g4" />
         <option value="$PROJECT_DIR$/grammar/DSLLexer.g4" />
+        <option value="$PROJECT_DIR$/grammar/DSLParser.g4" />
+        <option value="$PROJECT_DIR$/src/grammar_gen/DSLLexer.java" />
       </list>
     </option>
   </component>
@@ -331,6 +278,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SetDSL_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="COMP-16" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane">
@@ -354,16 +315,17 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\IntelliJ\COMP\src\grammar_gen" />
-      <recent name="D:\IntelliJ\COMP\src" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\IntelliJ\COMP\src\grammar" />
       <recent name="D:\IntelliJ\COMP" />
       <recent name="D:\IntelliJ\COMP\gen" />
       <recent name="D:\IntelliJ\COMP\compiler\src\grammar" />
       <recent name="D:\IntelliJ\COMP\grammar" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Joao\Documents\MIEIC\4º Ano\2S\COMP\COMP-16\src\grammar_gen" />
+      <recent name="D:\IntelliJ\COMP\src\grammar_gen" />
+      <recent name="D:\IntelliJ\COMP\src" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -663,18 +625,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.56236327" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32583067" sideWeight="0.46162048" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649842" sideWeight="0.442899" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32334384" sideWeight="0.53367496" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649842" sideWeight="0.43997073" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649842" sideWeight="0.5878477" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32334384" sideWeight="0.53367496" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32334384" sideWeight="0.41215226" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32334384" sideWeight="0.46632504" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32683983" sideWeight="0.47702408" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -736,7 +698,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -745,22 +707,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grammar/DSLLexer.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grammar/DSLParser.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23596">
-          <caret line="1388" column="21" selection-start-line="1388" selection-start-column="4" selection-end-line="1388" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testfile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -890,13 +836,6 @@
     <entry file="file://$PROJECT_DIR$/src/grammar/DSLLexer.java" />
     <entry file="file://$PROJECT_DIR$/src/DSLLexer.java" />
     <entry file="file://$PROJECT_DIR$/src/walker/DSLWalker.java" />
-    <entry file="file://$PROJECT_DIR$/src/grammar_gen/DSLParserListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar_gen/DSLVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -921,44 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar_gen/DSLParserBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="2858" column="62" selection-start-line="2858" selection-start-column="62" selection-end-line="2858" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar_gen/DSLParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="18838" column="0" selection-start-line="18838" selection-start-column="0" selection-end-line="18838" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar_gen/DSLLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/DSLOperation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="83" column="10" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="10" />
-          <folding>
-            <element signature="docComment;class#DSLOperation#0" expanded="false" />
-            <element signature="method#DSLOperation#0;class#DSLOperation#0" expanded="false" />
-            <element signature="method#DSLOperation#1;class#DSLOperation#0" expanded="false" />
-            <element signature="method#DSLOperation#3;class#DSLOperation#0" expanded="false" />
-            <element signature="method#getJavacode#0;class#DSLOperation#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/DSLVar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -979,18 +880,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/DSLOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="83" column="10" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="10" />
+          <folding>
+            <element signature="docComment;class#DSLOperation#0" expanded="false" />
+            <element signature="method#DSLOperation#0;class#DSLOperation#0" expanded="false" />
+            <element signature="method#DSLOperation#1;class#DSLOperation#0" expanded="false" />
+            <element signature="method#DSLOperation#3;class#DSLOperation#0" expanded="false" />
+            <element signature="method#getJavacode#0;class#DSLOperation#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar_gen/DSLParserBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="2975" column="26" selection-start-line="2975" selection-start-column="26" selection-end-line="2975" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar_gen/DSLParserListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="2477" column="53" selection-start-line="2477" selection-start-column="53" selection-end-line="2477" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/DSLLexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar_gen/DSLParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="18748" column="0" selection-start-line="18748" selection-start-column="0" selection-end-line="18748" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/antlr-4.5.2-complete.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grammar/DSLLexer.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="451" column="36" selection-start-line="451" selection-start-column="36" selection-end-line="451" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar_gen/DSLListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="256" column="88" selection-start-line="256" selection-start-column="88" selection-end-line="256" selection-end-column="88" />
+        <state relative-caret-position="14">
+          <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
           <folding>
             <element signature="method#DSLListener#0;class#DSLListener#0" expanded="false" />
             <element signature="docComment;method#enterDsl#0;class#DSLListener#0" expanded="false" />
-            <element signature="method#enterDsl#0;class#DSLListener#0" expanded="false" />
+            <element signature="method#enterLine#0;class#DSLListener#0" expanded="false" />
             <element signature="method#exitLine#0;class#DSLListener#0" expanded="false" />
             <element signature="method#enterDeclaration#0;class#DSLListener#0" expanded="false" />
-            <element signature="e#5354#5368#0" expanded="false" />
+            <element signature="method#exitDeclaration#0;class#DSLListener#0" expanded="false" />
+            <element signature="e#5432#5446#0" expanded="false" />
             <element signature="method#enterComplexOperation#0;class#DSLListener#0" expanded="false" />
+            <element signature="method#exitComplexOperation#0;class#DSLListener#0" expanded="false" />
             <element signature="method#enterSimpleOperation#0;class#DSLListener#0" expanded="false" />
             <element signature="method#exitSimpleOperation#0;class#DSLListener#0" expanded="false" />
             <element signature="method#enterLeftSide#0;class#DSLListener#0" expanded="false" />
@@ -998,20 +963,15 @@
             <element signature="method#enterDslAssignment#0;class#DSLListener#0" expanded="false" />
             <element signature="method#exitDslAssignment#0;class#DSLListener#0" expanded="false" />
             <element signature="method#enterPrint#0;class#DSLListener#0" expanded="false" />
-            <marker date="1465154418435" expanded="false" signature="1246:1601" placeholder="{...}" />
-            <marker date="1465154418435" expanded="false" signature="1670:2549" placeholder="{...}" />
-            <marker date="1465154418435" expanded="false" signature="3769:5449" placeholder="{...}" />
-            <marker date="1465154418435" expanded="false" signature="6275:8587" placeholder="{...}" />
-            <marker date="1465154418435" expanded="false" signature="6687:6695" placeholder="&lt;~&gt;" />
-            <marker date="1465154418435" expanded="false" signature="14457:15053" placeholder="{...}" />
+            <element signature="method#exitPrint#0;class#DSLListener#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/grammar_gen/DSLLexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
+        <state relative-caret-position="17">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1019,23 +979,23 @@
     <entry file="file://$PROJECT_DIR$/testfile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grammar/DSLParser.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="1355" column="29" selection-start-line="1355" selection-start-column="29" selection-end-line="1355" selection-end-column="29" />
+        <state relative-caret-position="190">
+          <caret line="1354" column="8" selection-start-line="1354" selection-start-column="8" selection-end-line="1354" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grammar/DSLLexer.g4">
+    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="608" column="0" selection-start-line="608" selection-start-column="0" selection-end-line="608" selection-end-column="0" />
+        <state relative-caret-position="48">
+          <caret line="52" column="50" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
           <folding />
         </state>
       </provider>

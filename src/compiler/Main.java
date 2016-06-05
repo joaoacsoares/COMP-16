@@ -40,11 +40,17 @@ public class Main {
             System.exit(-1);
         }
         //InputStream is = new FileInputStream(inputFile);
+
+
         PrintWriter pw = new PrintWriter(new File(outputFile));
+
+
+
         DSLLexer lexer = new DSLLexer( new ANTLRFileStream(inputFile));
         CommonTokenStream tokens = new CommonTokenStream( lexer );
         DSLParser parser = new DSLParser( tokens );
-        ParseTree tree = parser.dsl();
+
+        ParseTree tree = parser.compilationUnit();
         ParseTreeWalker walker = new ParseTreeWalker();
 
 
@@ -67,10 +73,11 @@ public class Main {
                 v.print();
             }
         }
+        pw.close();
         if(listener.getErrors() > 0)
         {
             System.out.println("There are syntax errors, on your code!");
         }
-        pw.close();
+
     }
 }

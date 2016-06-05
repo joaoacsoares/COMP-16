@@ -1351,15 +1351,16 @@ castExpression
 
 
 //DSL
-
 dsl:
-        DSLBEGIN line* DSLEND;
+        DSLBEGIN line DSLEND;
+
+
 
 line:
-        declaration
-        |dslAssignment
-        |print
-        |array; // (...)
+        declaration line?
+        |dslAssignment line?
+        |print line?
+        |array line?; // (...)
 
 declaration:
         VAR_TYPE VAR (DSL_ASSIGN (SET_TYPE | rightSide))? DSL_SEMI;
@@ -1386,6 +1387,8 @@ dslAssignment:
     leftSide DSL_ASSIGN rightSide DSL_SEMI;
 
 print:
-    VAR DUMP DSL_SEMI
-;
+    VAR DUMP DSL_SEMI;
+
+
+
 

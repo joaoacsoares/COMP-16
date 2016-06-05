@@ -37,6 +37,7 @@
             System.out.println( "Entering DSL Mode :" + ctx.DSLBEGIN().getText());
 
             DSLBlock b = new DSLBlock(ctx.DSLBEGIN().getSymbol().getLine(), ctx.DSLEND().getSymbol().getLine());
+            System.out.println(b.getStartLine() + " - " + b.getFinishLine());
             this.currentBlock = b;
             Main.representation.add(b);
         }
@@ -403,5 +404,7 @@
         @Override public void visitTerminal(TerminalNode node) { }
 
         @Override public void visitErrorNode(ErrorNode node) { }
+
+
     }
 

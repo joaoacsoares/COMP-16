@@ -453,6 +453,7 @@ DSLEND              :'*/' -> popMode;
 
 
 //variables
+
 VAR_TYPE
 :
      INPUT_VAR
@@ -605,6 +606,8 @@ DIGIT
 :
     [0-9]
 ;
+
+
 
 
 

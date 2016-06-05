@@ -1,7 +1,6 @@
+/*@SETDSL
+Input a = Set(10);
+Input b = Set(10);
+Output c = a.b.b;
 
-        /*@SETDSL
-            Input A = Set(10);
-            Input B = Stack(10);
-            Output D;
-            D = B.A;
-        */
+*/

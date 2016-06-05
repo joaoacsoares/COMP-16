@@ -94,8 +94,18 @@
 
         @Override public void exitDeclaration(DSLParser.DeclarationContext ctx) {
             //System.out.println("operation: line-" + ctx.VAR().getSymbol().getLine() + " type-" + "declaration vars-" + ctx.VAR().getText());
-            DSLOperation tmp = new DSLOperation(ctx.VAR().getSymbol().getLine(), "declaration", ctx.VAR().getText());
+            DSLVar vx = null;
+            for(DSLVar v : currentBlock.getBlockVariables())
+            {
+                if(v.name.equals(ctx.VAR().getText()))
+                {
+                    vx = v;
+                }
+            }
+            if(vx != null){
+            DSLOperation tmp = new DSLOperation(ctx.VAR().getSymbol().getLine(), "declaration", vx);
             currentBlock.addOp(tmp);
+            }
         }
 
         @Override public void enterComplexOperation(DSLParser.ComplexOperationContext ctx) {
@@ -122,10 +132,23 @@
             String tmp = null;
             for(int i = ctx.VAR().size()-1 ; i > 0 ; i--) {
                 //System.out.println("operation: line-" + ctx.OP().get(i - 1).getSymbol().getLine() + " type-" + ctx.OP().get(i - 1).getText() + " vars- " + ctx.VAR().get(i - 1).getText() + " " + ctx.VAR().get(i).getText());
-                String[] aux = new String[2];
+                ArrayList<DSLVar> aux = new ArrayList<DSLVar>();
 
-                aux[0] = ctx.VAR().get(i - 1).getText();
-                aux[1] = ctx.VAR().get(i).getText();
+
+
+                for(DSLVar v : currentBlock.getBlockVariables())
+                {
+                    if(v.name.equals(ctx.VAR().get(i - 1).getText()))
+                    {
+                        aux.add(0,v);
+                    }
+                    else if (v.name.equals(ctx.VAR().get(i).getText()))
+                    {
+                        aux.add(1,v);
+                    }
+                }
+
+
                 for(TerminalNode n : ctx.VAR())
                 {
                     for(DSLVar v : currentBlock.getBlockVariables())
@@ -187,8 +210,21 @@
 
         @Override public void exitSimpleOperation(DSLParser.SimpleOperationContext ctx) {
             //System.out.println("operation: line-" + ctx.OP().getSymbol().getLine() + " type-" + ctx.OP().getText() + " vars-" + ctx.VAR().getText());
-            DSLOperation tmp = new DSLOperation(ctx.OP().getSymbol().getLine(),ctx.OP().getText(), ctx.VAR().getText());
-            currentBlock.addOp(tmp);
+            DSLVar vx = null;
+            for(DSLVar v : currentBlock.getBlockVariables())
+            {
+                if(v.name.equals(ctx.VAR().getText()))
+                {
+                    vx = v;
+                }
+            }
+
+            if (vx != null)
+            {
+                DSLOperation tmp = new DSLOperation(ctx.OP().getSymbol().getLine(),ctx.OP().getText(), vx);
+                currentBlock.addOp(tmp);
+            }
+
         }
 
         @Override public void enterLeftSide(DSLParser.LeftSideContext ctx) {
@@ -239,8 +275,28 @@
             else if (ctx.rightSide().VAR() != null)
                 aux[1] = ctx.rightSide().VAR().getText();
 
+            ArrayList<DSLVar> aux1 = new ArrayList<DSLVar>();
+
+
+
+            for(DSLVar v : currentBlock.getBlockVariables())
+            {
+                if(v.name.equals(aux[0]))
+                {
+                    aux1.add(0,v);
+                }
+                else if (v.name.equals(aux[1]))
+                {
+                    aux1.add(1,v);
+                }
+            }
+
+
+
+
+
            // System.out.println(aux[0] + aux[1]);
-            DSLOperation tmp = new DSLOperation(ctx.DSL_ASSIGN().getSymbol().getLine(), "assignment", aux);
+            DSLOperation tmp = new DSLOperation(ctx.DSL_ASSIGN().getSymbol().getLine(), "assignment", aux1);
             currentBlock.addOp(tmp);
         }
 
@@ -263,8 +319,20 @@
 
         @Override public void exitPrint(DSLParser.PrintContext ctx) {
             //System.out.println("operation: line-" + ctx.DUMP().getSymbol().getLine() + " type-" + "print" + " vars-" + ctx.VAR().getText());
-            DSLOperation tmp = new DSLOperation(ctx.DUMP().getSymbol().getLine(),"print", ctx.VAR().getText());
-            currentBlock.addOp(tmp);
+
+            DSLVar vx = null;
+            for(DSLVar v : currentBlock.getBlockVariables())
+            {
+                if(v.name.equals(ctx.VAR().getText()))
+                {
+                    vx = v;
+                }
+            }
+            if(vx!=null){
+                DSLOperation tmp = new DSLOperation(ctx.DUMP().getSymbol().getLine(),"print", vx);
+                currentBlock.addOp(tmp);
+            }
+
 
         }
 

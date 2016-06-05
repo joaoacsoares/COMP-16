@@ -61,6 +61,17 @@ public class DSLBlock {
         blockOps.add(op);
     }
 
+    public DSLVar getVarByName(String name)
+    {
+
+        for (DSLVar v : blockVariables
+             ) {
+            if(v.name.equals(name))
+                return v;
+        }
+        return null;
+    }
+
 
 
 

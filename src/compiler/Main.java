@@ -26,19 +26,22 @@ public class Main {
     public static ArrayList<DSLBlock> representation;
     public static void main( String[] args) throws Exception
     {
-        /*String inputFile = null;
+        String inputFile = null;
         String outputFile = null;
 
         if(args.length > 1)
         {
             inputFile = args[0];
+            System.out.println(inputFile);
             outputFile = args[1];
+            System.out.println(outputFile);
         } else {
             System.out.println("Wrong use of program! Please try again!");
             System.exit(-1);
-        }*/
-
-        DSLLexer lexer = new DSLLexer( new ANTLRFileStream("testfile.java"));
+        }
+        //InputStream is = new FileInputStream(inputFile);
+        PrintWriter pw = new PrintWriter(new File(outputFile));
+        DSLLexer lexer = new DSLLexer( new ANTLRFileStream(inputFile));
         CommonTokenStream tokens = new CommonTokenStream( lexer );
         DSLParser parser = new DSLParser( tokens );
         ParseTree tree = parser.dsl();
@@ -54,6 +57,10 @@ public class Main {
             for(DSLOperation op : b.getBlockOps())
             {
                 op.print();
+                op.processToJava();
+                pw.print(op.getJavacode());
+                
+
             }
             for(DSLVar v : b.getBlockVariables())
             {
@@ -64,5 +71,6 @@ public class Main {
         {
             System.out.println("There are syntax errors, on your code!");
         }
+        pw.close();
     }
 }

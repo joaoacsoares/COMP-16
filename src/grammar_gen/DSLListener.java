@@ -12,10 +12,12 @@
     import compiler.Main;
     import data.DSLBlock;
     import java.util.ArrayList;
+    import java.util.Stack;
 
     public class DSLListener extends DSLParserBaseListener {
         private int errors;
         private DSLBlock currentBlock;
+        private Stack<DSLOperation> stack = new Stack();
 
 
 
@@ -51,6 +53,8 @@
         }
 
         @Override public void enterLine(DSLParser.LineContext ctx) {
+            stack.removeAllElements();
+
             if (ctx.declaration() != null && !ctx.declaration().DSL_SEMI().getText().equals(";")){
                 System.out.println("Missing semicolon (';') at the end of the line " + ctx.declaration().VAR_TYPE().getSymbol().getLine() );
                 errors++;
@@ -67,7 +71,15 @@
 
         }
 
-        @Override public void exitLine(DSLParser.LineContext ctx) { }
+        @Override public void exitLine(DSLParser.LineContext ctx) {
+            DSLOperation tmp = new DSLOperation();
+            System.out.println("Exit Line:");
+            while(!stack.isEmpty()){
+                tmp.setpOp(tmp.getpOp() + stack.pop().getpOp());
+            }
+            System.out.println("AUX : " + tmp.getpOp());
+            currentBlock.addOp(tmp);
+        }
 
         @Override public void enterDeclaration(DSLParser.DeclarationContext ctx) {
             String name, type, datatype;
@@ -104,7 +116,8 @@
             }
             if(vx != null){
             DSLOperation tmp = new DSLOperation(ctx.VAR().getSymbol().getLine(), "declaration", vx);
-            currentBlock.addOp(tmp);
+                tmp.print();
+                stack.push(tmp);
             }
         }
 
@@ -135,17 +148,24 @@
                 ArrayList<DSLVar> aux = new ArrayList<DSLVar>();
 
 
-
                 for(DSLVar v : currentBlock.getBlockVariables())
                 {
-                    if(v.name.equals(ctx.VAR().get(i - 1).getText()))
+                   /* if(v.name.equals(ctx.VAR().get(i).getText()))
                     {
                         aux.add(0,v);
-                    }
-                    else if (v.name.equals(ctx.VAR().get(i).getText()))
+                        System.out.println("V0 : "+v.name);
+                    }*/
+                    if (v.name.equals(ctx.VAR().get(i-1).getText()))
                     {
-                        aux.add(1,v);
+                        aux.add(0,v);
+
                     }
+                    /*else if(v.name.equals(ctx.VAR().get(i).getText()) && i != ctx.VAR().size()-1)
+                    {
+                        aux.add(0,v);
+                        System.out.println("V0 : "+v.name);
+                    }*/
+                    if(v.name.equals(ctx.VAR().get(i).getText()) && i == ctx.VAR().size()-1) aux.add(0,v);
                 }
 
 
@@ -169,7 +189,9 @@
 
                 if(!typeChecker){
                     DSLOperation tmp1 = new DSLOperation(ctx.OP().get(i - 1).getSymbol().getLine(), ctx.OP().get(i - 1).getText(), aux);
-                    currentBlock.addOp(tmp1);
+                 //   System.out.println("Inserting in stack");
+                    tmp1.print();
+                    stack.push(tmp1);
                 }
 
             }
@@ -222,7 +244,8 @@
             if (vx != null)
             {
                 DSLOperation tmp = new DSLOperation(ctx.OP().getSymbol().getLine(),ctx.OP().getText(), vx);
-                currentBlock.addOp(tmp);
+                tmp.print();
+                stack.push(tmp);
             }
 
         }
@@ -297,7 +320,8 @@
 
            // System.out.println(aux[0] + aux[1]);
             DSLOperation tmp = new DSLOperation(ctx.DSL_ASSIGN().getSymbol().getLine(), "assignment", aux1);
-            currentBlock.addOp(tmp);
+            tmp.print();
+            stack.push(tmp);
         }
 
         @Override public void enterPrint(DSLParser.PrintContext ctx) {
@@ -330,7 +354,8 @@
             }
             if(vx!=null){
                 DSLOperation tmp = new DSLOperation(ctx.DUMP().getSymbol().getLine(),"print", vx);
-                currentBlock.addOp(tmp);
+                tmp.print();
+                stack.push(tmp);
             }
 
 

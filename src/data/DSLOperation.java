@@ -1,7 +1,6 @@
 package data;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Joao on 22/05/2016.
@@ -32,6 +31,11 @@ public class DSLOperation {
         this.result = "";
     }
 
+    public DSLOperation()
+    {
+        this.result = "";
+    }
+
     public DSLOperation(int l,String t, ArrayList<DSLVar> vars, String tmp)
     {
         this.line = l;
@@ -51,6 +55,9 @@ public class DSLOperation {
     public String getpOp(){
         return pOp;
     }
+    public void setpOp(String pOp){
+        this.pOp = pOp;
+    }
     public String getJavacode(){return javacode;}
 
     public ArrayList<DSLVar> getVars()
@@ -60,18 +67,19 @@ public class DSLOperation {
 
     public void print ()
     {
-        pOp = "//" + type + "//" + line;
+        //pOp = "//" + type; //+ "//" + line;
 
         for(DSLVar b : vars)
         {
-            pOp += ("//" + b.name);
+            pOp += ("//" + b.name + "//" + type);
         }
         if(result != "")
         {
             pOp += "//$" + result;
         }
-        pOp += "//" ;
-        System.out.print(pOp);
+        //pOp += ("//" + type);
+        pOp += "" ;
+        //System.out.print(pOp);
 
     }
 

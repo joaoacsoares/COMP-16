@@ -97,62 +97,56 @@ public class DSLOperation {
     }
 
     public void processToJava(){
-        System.out.println(line);
-        for (DSLVar op : vars)
+        for(String t : types)
         {
-            System.out.print(op.name);
-        }
-        for (String op : types)
-        {
-            System.out.print(op);
-        }
-        System.out.println();
-        /*switch (type)
-        {
-            case "declaration":
-                javacode = "ArrayList<int> " + vars.get(0) +";";
-                //System.out.println(javacode);
-                break;
-            case ".":
-                javacode = ".";
-                //System.out.println(javacode);
-                break;
-            case "+":
-                javacode = "+";
-                //System.out.println(javacode);
-                break;
-            case "int":
-                javacode = "int";
-                //System.out.println(javacode);
-                break;
-            case "assignment":
-                javacode = "=";
-                //System.out.println(javacode);
-                break;
-            case "declAssi":
-                javacode = "decl=";
-                //System.out.println(javacode);
-                break;
-            case "'":
-                javacode = "reverse";
+            switch (t)
+            {
+                case "declaration":
+                    javacode += "ArrayList<int> " + vars.get(0).name +";";
+                    //System.out.println(javacode);
+                    break;
+                case ".":
+                    javacode += ".";
+                    //System.out.println(javacode);
+                    break;
+                case "+":
+                    javacode += "+";
+                    //System.out.println(javacode);
+                    break;
+                case "int":
+                    javacode += "int";
+                    //System.out.println(javacode);
+                    break;
+                case "assignment":
+                    javacode += "=";
+                    //System.out.println(javacode);
+                    break;
+                case "declAssi":
+                    javacode += "decl=";
+                    //System.out.println(javacode);
+                    break;
+                case "'":
+                    javacode += "reverse";
 
-                //System.out.println(javacode);
-                break;
+                    //System.out.println(javacode);
+                    break;
 
-            default:
-                if(type.contains("[") && type.contains(",") && type.contains("]"))
-                {
-                    javacode = "range";
-                }
-                else if (type.contains("[") && type.contains("]"))
-                {
-                    javacode = "select";
-                }
-                //System.out.println(words[2]);
-                break;
+                default:
+                    if(t.contains("[") && t.contains(",") && t.contains("]"))
+                    {
+                        javacode += "range";
+                    }
+                    else if (t.contains("[") && t.contains("]"))
+                    {
+                        javacode += "select";
+                    }
+                    //System.out.println(words[2]);
+                    break;
 
+            }
         }
-*/
+
+
         //System.out.println(pOp);
         /*for(String s : pOp.split("<a>"))
         {

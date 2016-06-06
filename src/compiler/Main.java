@@ -59,18 +59,16 @@ public class Main {
         DSLListener listener = new DSLListener();
         walker.walk( listener, tree );
 
-        for(DSLBlock b : representation)
+       for(DSLBlock b : representation)
         {
-
             String words = content.split("/\\*@SETDSL")[0];
             content = content.replace(words,"");
             String words1 = content.split("\\*/")[0];
+            words1 += "*/";
             content = content.replace(words1,"");
-            content = content.replaceFirst("\\*/","");
-            //System.out.println(content);
+
             pw.print(words);
 
-            //content = content - content.split("/*@SETDSL")[0];
             for(DSLOperation op : b.getBlockOps())
             {
                 //op.print();

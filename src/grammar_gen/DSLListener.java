@@ -365,13 +365,20 @@
 
                 ArrayList<DSLVar> aux1 = new ArrayList<>();
                 DSLVar v1 = new DSLVar();
+
                 aux1.add(v1);
 
 
                 for (DSLVar v : currentBlock.getBlockVariables()) {
                     if (v.name.equals(aux[0])) {
+                        if(ctx.VAR_TYPE() != null)
+                        {
+                            v.IOtype = ctx.VAR_TYPE().getText();
+                            //System.out.println("TESTE" + ctx.VAR_TYPE().getText());
+                        }
                         aux1.set(0, v);
                         v.markAsUsed();
+
                     }
                 }
 

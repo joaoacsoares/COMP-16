@@ -97,32 +97,44 @@ public class DSLOperation {
     }
 
     public void processToJava(){
-        for(String t : types)
+        for(int i = 0 ; i<types.size();i++)
         {
-            switch (t)
+            switch (types.get(i))
             {
                 case "declaration":
-                    javacode += "ArrayList<int> " + vars.get(0).name +";";
+                    //System.out.print(vars.get(i).IOtype);
+                    if(vars.get(i).IOtype.equals("Output"))
+                        javacode += "ArrayList<Object> " + vars.get(i).name + "= new ArrayList<>();\n";
+                    //javacode += "ArrayList<int> " + vars.get(0).name +"; \n";
                     //System.out.println(javacode);
                     break;
                 case ".":
-                    javacode += ".";
+                    javacode +=vars.get(i+1).name + ".addAll(" + vars.get(i).name + ");\n";
                     //System.out.println(javacode);
                     break;
                 case "+":
-                    javacode += "+";
-                    //System.out.println(javacode);
+                    javacode += "for(Object obj : " + vars.get(i+1).name + "){\n";
+                    javacode += "if(!"+vars.get(i).name+".contains(obj))\n";
+                    javacode += vars.get(i+1).name+".add(obj);\n}\n";
+
                     break;
                 case "int":
-                    javacode += "int";
-                    //System.out.println(javacode);
+                    javacode += "ArrayList<Object> tmp = new ArrayList<>();\n";
+                    javacode += "for(Object obj : " + vars.get(i+1).name + "){\n";
+                    javacode += "if("+vars.get(i).name+".contains(obj))\n";
+                    javacode += "tmp.add(obj);\n}\n";
+                    javacode += vars.get(i+1).name +"=tmp;\n";
+
                     break;
                 case "assignment":
-                    javacode += "=";
+
                     //System.out.println(javacode);
                     break;
                 case "declAssi":
-                    javacode += "decl=";
+                    //System.out.println(vars.get(i+1).name);
+                    if(vars.get(i+1).IOtype.equals("Output"))
+                        javacode += "ArrayList<Object> " + vars.get(i+1).name + "= new ArrayList<>();\n";
+                    javacode += vars.get(i+1).name + "=" + vars.get(i).name + ";\n";
                     //System.out.println(javacode);
                     break;
                 case "'":
@@ -132,11 +144,11 @@ public class DSLOperation {
                     break;
 
                 default:
-                    if(t.contains("[") && t.contains(",") && t.contains("]"))
+                    if(types.get(i).contains("[") && types.get(i).contains(",") && types.get(i).contains("]"))
                     {
                         javacode += "range";
                     }
-                    else if (t.contains("[") && t.contains("]"))
+                    else if (types.get(i).contains("[") && types.get(i).contains("]"))
                     {
                         javacode += "select";
                     }

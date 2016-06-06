@@ -4,11 +4,9 @@ public class HelloWorld {
 /*@SETDSL
  Input b;
  Input a;
- Output c = Stack(10);
- c = a.b.b+a int b;
- c = a';
- c = a[1,5];
- c = a[5];
+ Input c;
+ Input d;
+ Output e = a.b+c int d;
  */
     }
 }

@@ -1384,7 +1384,7 @@ rightSide:
     |complexOperation;
 
 dslAssignment:
-    leftSide DSL_ASSIGN rightSide DSL_SEMI;
+   (VAR_TYPE)? leftSide DSL_ASSIGN rightSide DSL_SEMI;
 
 print:
     VAR DUMP DSL_SEMI;

@@ -1,6 +1,5 @@
 package data;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -131,15 +130,20 @@ public class DSLOperation {
                     //System.out.println(javacode);
                     break;
                 case "declAssi":
-                    //System.out.println(vars.get(i+1).name);
+                   // System.out.println(vars.get(i).name);
                     if(vars.get(i+1).IOtype.equals("Output"))
                         javacode += "ArrayList<Object> " + vars.get(i+1).name + "= new ArrayList<>();\n";
                     javacode += vars.get(i+1).name + "=" + vars.get(i).name + ";\n";
                     //System.out.println(javacode);
                     break;
                 case "'":
-                    javacode += "reverse";
+                    javacode += "ArrayList<Object> tmpRev = new ArrayList<>();\n";
+                    javacode += "for(int i = 0 ; i < " + vars.get(i).name + ".size() ; i++){\n";
+                    javacode += "tmpRev.add(i, " + vars.get(i).name + ".get(" + vars.get(i).name + ".size()-i-1));\n}\n";
+                    javacode += vars.get(i).name + " = tmpRev;\n";
 
+                    //ArrayList<Object> tmpRev = new ArrayList<>();
+                    //tmpRev.
                     //System.out.println(javacode);
                     break;
 

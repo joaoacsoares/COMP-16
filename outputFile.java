@@ -1,4 +1,9 @@
-ArrayList<Object> xyz= new ArrayList<>();
+ArrayList<Object> x= new ArrayList<>();
+ArrayList<Object> tmpRev = new ArrayList<>();
+for(int i = 0 ; i < a.size() ; i++){
+tmpRev.add(i, a.get(a.size()-i-1));
+}
+a = tmpRev;
 b.addAll(a);
 for(Object obj : c){
 if(!b.contains(obj))

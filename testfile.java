@@ -6,6 +6,8 @@ public class HelloWorld {
  Input a;
  Input c;
  Input d;
+ Output x;
+ x = a';
  Output e = a.b+c int d;
  */
     }

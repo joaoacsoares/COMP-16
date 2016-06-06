@@ -9,6 +9,7 @@ public class HelloWorld {
  Output x;
  x = a';
  Output e = a.b+c int d;
+ b = a[5,9];
  */
     }
 }

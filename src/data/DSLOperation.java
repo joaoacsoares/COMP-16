@@ -150,7 +150,10 @@ public class DSLOperation {
                 default:
                     if(types.get(i).contains("[") && types.get(i).contains(",") && types.get(i).contains("]"))
                     {
-                        javacode += "range";
+                        String index = types.get(i).toString().split("\\[")[1].split("\\]")[0];
+
+
+                        javacode += vars.get(i).name + ".subList(" + index + ");\n";
                     }
                     else if (types.get(i).contains("[") && types.get(i).contains("]"))
                     {
@@ -164,7 +167,6 @@ public class DSLOperation {
 
             }
         }
-
 
         //System.out.println(pOp);
         /*for(String s : pOp.split("<a>"))

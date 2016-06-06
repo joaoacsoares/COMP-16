@@ -67,7 +67,7 @@ public class Main {
             String words1 = content.split("\\*/")[0];
             content = content.replace(words1,"");
             content = content.replaceFirst("\\*/","");
-            System.out.println(content);
+            //System.out.println(content);
             pw.print(words);
 
             //content = content - content.split("/*@SETDSL")[0];

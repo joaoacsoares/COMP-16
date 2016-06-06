@@ -5,11 +5,11 @@ public class HelloWorld {
  Input b;
  Input a;
  Input c;
- Input d;
  Output x;
  x = a';
  Output e = a.b+c int d;
  b = a[5,9];
+ c.dump();
  */
     }
 }

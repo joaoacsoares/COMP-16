@@ -125,6 +125,10 @@ public class DSLOperation {
                     javacode += vars.get(i).name + " = tmpRev;\n";
 
                     break;
+                case "print":
+                    javacode += "for(Object obj : " + vars.get(i).name + ") {\n";
+                    javacode += "System.out.println(obj); }\n";
+                    break;
 
                 default:
                     if(types.get(i).contains("[") && types.get(i).contains(",") && types.get(i).contains("]"))

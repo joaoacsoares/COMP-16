@@ -103,7 +103,7 @@ public class DSLOperation {
                 case "declaration":
                     //System.out.print(vars.get(i).IOtype);
                     if(vars.get(i).IOtype.equals("Output"))
-                        javacode += "ArrayList<Object> " + vars.get(i).name + "= new ArrayList<>();\n";
+                        javacode += "ArrayList<Object> " + vars.get(i).name + " = new ArrayList<>();\n";
                     //javacode += "ArrayList<int> " + vars.get(0).name +"; \n";
                     //System.out.println(javacode);
                     break;
@@ -122,7 +122,7 @@ public class DSLOperation {
                     javacode += "for(Object obj : " + vars.get(i+1).name + "){\n";
                     javacode += "if("+vars.get(i).name+".contains(obj))\n";
                     javacode += "tmp.add(obj);\n}\n";
-                    javacode += vars.get(i+1).name +"=tmp;\n";
+                    javacode += vars.get(i+1).name +"= tmp;\n";
 
                     break;
                 case "assignment":
@@ -132,8 +132,8 @@ public class DSLOperation {
                 case "declAssi":
                    // System.out.println(vars.get(i).name);
                     if(vars.get(i+1).IOtype.equals("Output"))
-                        javacode += "ArrayList<Object> " + vars.get(i+1).name + "= new ArrayList<>();\n";
-                    javacode += vars.get(i+1).name + "=" + vars.get(i).name + ";\n";
+                        javacode += "ArrayList<Object> " + vars.get(i+1).name + " = new ArrayList<>();\n";
+                    javacode += vars.get(i+1).name + " = " + vars.get(i).name + ";\n";
                     //System.out.println(javacode);
                     break;
                 case "'":
@@ -154,7 +154,10 @@ public class DSLOperation {
                     }
                     else if (types.get(i).contains("[") && types.get(i).contains("]"))
                     {
-                        javacode += "select";
+                        String index = types.get(i).toString();
+                        int id = Integer.parseInt(index.split("\\[")[1].split("\\]")[0]);
+
+                        javacode += vars.get(i).name + ".get(" + id + ");\n";
                     }
                     //System.out.println(words[2]);
                     break;

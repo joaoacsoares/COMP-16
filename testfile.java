@@ -11,13 +11,10 @@ public class outputFile {
 /*@SETDSL
 Input a;
 Input b;
-Output c = a int b;
+a = b';
+Output c = a.b;
+c.dump();
+Input d;
  */
-        for(Object i : c)
-        {
-            System.out.println(i);
-        }
-
-
     }
 }

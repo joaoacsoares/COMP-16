@@ -122,7 +122,7 @@ public class DSLOperation {
                     javacode += "ArrayList<Object> tmpRev = new ArrayList<>();\n";
                     javacode += "for(int i = 0 ; i < " + vars.get(i).name + ".size() ; i++){\n";
                     javacode += "tmpRev.add(i, " + vars.get(i).name + ".get(" + vars.get(i).name + ".size()-i-1));\n}\n";
-                    javacode += vars.get(i).name + " = tmpRev;\n";
+                    javacode += vars.get(i+1).name + " = tmpRev;\n";
 
                     break;
                 case "print":

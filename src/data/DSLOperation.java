@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Created by Joao on 22/05/2016.
@@ -95,8 +96,8 @@ public class DSLOperation {
                     break;
 
                 case "+":
-                    javacode += "for(Object obj : " + vars.get(i+1).name + "){\n";
-                    javacode += "if(!"+vars.get(i).name+".contains(obj))\n";
+                    javacode += "for(Object obj : " + vars.get(i).name + "){\n";
+                    javacode += "if(!"+vars.get(i+1).name+".contains(obj))\n";
                     javacode += vars.get(i+1).name+".add(obj);\n}\n";
 
                     break;
@@ -134,16 +135,16 @@ public class DSLOperation {
                     if(types.get(i).contains("[") && types.get(i).contains(",") && types.get(i).contains("]"))
                     {
                         String index = types.get(i).toString().split("\\[")[1].split("\\]")[0];
+                        javacode += vars.get(i+1).name + " = " +"new ArrayList<Object>(" +vars.get(i).name + ".subList(" + index + "));\n";
 
-
-                        javacode += vars.get(i).name + ".subList(" + index + ");\n";
                     }
                     else if (types.get(i).contains("[") && types.get(i).contains("]"))
                     {
+
                         String index = types.get(i).toString();
                         int id = Integer.parseInt(index.split("\\[")[1].split("\\]")[0]);
 
-                        javacode += vars.get(i).name + ".get(" + id + ");\n";
+                        javacode += vars.get(i+1).name + ".add(" + vars.get(i).name + ".get(" + id + "));\n";
                     }
 
                     break;

@@ -44,6 +44,7 @@ public class Main {
 
         PrintWriter pw = new PrintWriter(new File(outputFile));
 
+        String content = new Scanner(new File(inputFile)).useDelimiter("\\Z").next();
 
 
         DSLLexer lexer = new DSLLexer( new ANTLRFileStream(inputFile));
@@ -61,6 +62,15 @@ public class Main {
         for(DSLBlock b : representation)
         {
 
+            String words = content.split("/\\*@SETDSL")[0];
+            content = content.replace(words,"");
+            String words1 = content.split("\\*/")[0];
+            content = content.replace(words1,"");
+            content = content.replaceFirst("\\*/","");
+            System.out.println(content);
+            pw.print(words);
+
+            //content = content - content.split("/*@SETDSL")[0];
             for(DSLOperation op : b.getBlockOps())
             {
                 //op.print();
@@ -74,6 +84,7 @@ public class Main {
                 v.print();
             }
         }
+        pw.print(content);
         pw.close();
         if(listener.getErrors() > 0)
         {

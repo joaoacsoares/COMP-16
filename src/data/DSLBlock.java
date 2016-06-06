@@ -9,7 +9,7 @@ public class DSLBlock {
     private int startLine;
     private int finishLine;
     private ArrayList<DSLVar> blockVariables;
-    private ArrayList<DSLOperation> blockOps;
+    public ArrayList<DSLOperation> blockOps;
 
 
 

@@ -1,5 +1,6 @@
 package data;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -7,46 +8,49 @@ import java.util.ArrayList;
  */
 public class DSLOperation {
     private int line;
-    private String type;
-    private ArrayList<DSLVar> vars = new ArrayList<DSLVar>();
+    private ArrayList<String> types = new ArrayList<>();
+    private ArrayList<DSLVar> vars = new ArrayList<>();
     private String pOp = new String();
     private String javacode = new String();
-    private String result;
 
     public DSLOperation(int l, String t , ArrayList<DSLVar> vars)
     {
         this.line = l;
-        this.type = t;
+        this.types.add(t);
         this.vars = vars;
-        this.result = "";
 
     }
+
+    public DSLOperation(int l, ArrayList<String> t , ArrayList<DSLVar> vars)
+    {
+        this.line = l;
+        this.types = t;
+        this.vars = vars;
+
+    }
+    public DSLOperation()
+    {
+
+    }
+
 
     public DSLOperation(int l, String t , DSLVar vars)
     {
         this.line = l;
-        this.type = t;
+        this.types.add(t);
         //this.vars =
         this.vars.add(vars);
-        this.result = "";
     }
 
-    public DSLOperation()
-    {
-        this.result = "";
-    }
 
-    public DSLOperation(int l,String t, ArrayList<DSLVar> vars, String tmp)
-    {
-        this.line = l;
-        this.type = t;
-        this.vars = vars;
-        this.result = tmp;
-    }
 
-    public String getType()
+    public ArrayList<String> getTypes()
     {
-        return type;
+        return types;
+    }
+    public void setTypes(ArrayList<String> types)
+    {
+        this.types = types;
     }
     public int getLine()
     {
@@ -64,10 +68,14 @@ public class DSLOperation {
     {
         return vars;
     }
+    public void setVars(ArrayList<DSLVar> va)
+    {
+        this.vars = va;
+    }
 
     public void print ()
     {
-        //pOp = "//" + type; //+ "//" + line;
+        /*//pOp = "//" + type; //+ "//" + line;
 
         for(DSLVar b : vars)
         {
@@ -77,12 +85,76 @@ public class DSLOperation {
         //pOp += ("//" + type);
         //pOp += "" ;
         //System.out.println(pOp);
+*/
+    }
 
+    public void addOperation(DSLOperation op)
+    {
+        ArrayList<String> aux = types;
+        ArrayList<DSLVar> aux1 = vars;
+        aux.addAll(op.getTypes());
+        aux1.addAll(op.getVars());
     }
 
     public void processToJava(){
+        System.out.println(line);
+        for (DSLVar op : vars)
+        {
+            System.out.print(op.name);
+        }
+        for (String op : types)
+        {
+            System.out.print(op);
+        }
+        System.out.println();
+        /*switch (type)
+        {
+            case "declaration":
+                javacode = "ArrayList<int> " + vars.get(0) +";";
+                //System.out.println(javacode);
+                break;
+            case ".":
+                javacode = ".";
+                //System.out.println(javacode);
+                break;
+            case "+":
+                javacode = "+";
+                //System.out.println(javacode);
+                break;
+            case "int":
+                javacode = "int";
+                //System.out.println(javacode);
+                break;
+            case "assignment":
+                javacode = "=";
+                //System.out.println(javacode);
+                break;
+            case "declAssi":
+                javacode = "decl=";
+                //System.out.println(javacode);
+                break;
+            case "'":
+                javacode = "reverse";
+
+                //System.out.println(javacode);
+                break;
+
+            default:
+                if(type.contains("[") && type.contains(",") && type.contains("]"))
+                {
+                    javacode = "range";
+                }
+                else if (type.contains("[") && type.contains("]"))
+                {
+                    javacode = "select";
+                }
+                //System.out.println(words[2]);
+                break;
+
+        }
+*/
         //System.out.println(pOp);
-        for(String s : pOp.split("<a>"))
+        /*for(String s : pOp.split("<a>"))
         {
             if(s.length() >1)
             {
@@ -135,7 +207,7 @@ public class DSLOperation {
 
                 }
             }
-        }
+        }*/
     }
 
 }

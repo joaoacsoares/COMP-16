@@ -60,9 +60,10 @@ public class Main {
 
         for(DSLBlock b : representation)
         {
+
             for(DSLOperation op : b.getBlockOps())
             {
-                op.print();
+                //op.print();
                 op.processToJava();
                 pw.print(op.getJavacode());
                 

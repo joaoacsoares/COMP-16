@@ -43,7 +43,6 @@
         }
 
         @Override public void exitDsl(DSLParser.DslContext ctx) {
-            //ctx.getStop();
             System.out.println("Exiting DSL Mode - Semantic Analysis Complete");
             System.out.println(errors + " errors were found.");
 
@@ -97,13 +96,7 @@
         }
 
         @Override public void exitLine(DSLParser.LineContext ctx) {
-            /*DSLOperation tmp = new DSLOperation();
-            //System.out.println("Exit Line:");
-            while(!stack.isEmpty()){
-                tmp.setpOp(tmp.getpOp() +"<a>"+ stack.pop().getpOp()+"<a>");
-            }
-            //System.out.println("AUX : " + tmp.getpOp());
-            currentBlock.addOp(tmp);*/
+
         }
 
         @Override public void enterDeclaration(DSLParser.DeclarationContext ctx) {
@@ -130,7 +123,6 @@
         }
 
         @Override public void exitDeclaration(DSLParser.DeclarationContext ctx) {
-            //System.out.println("operation: line-" + ctx.VAR().getSymbol().getLine() + " type-" + "declaration vars-" + ctx.VAR().getText());
             DSLVar vx = null;
             for(DSLVar v : currentBlock.getBlockVariables())
             {
@@ -171,8 +163,7 @@
 
                         }
                     }
-                    //tmp.print();
-                    //stack.push(tmp);
+
                     currentBlock.addOp(tmp);
                 }
             }
@@ -235,7 +226,6 @@
                                 aux1.add(n.getText());
                             } else
                                 aux1.add(n.getText());
-                            //System.out.println(words[2]);
                             break;
                     }
                 }
@@ -284,7 +274,6 @@
         }
 
         @Override public void exitSimpleOperation(DSLParser.SimpleOperationContext ctx) {
-            //System.out.println("operation: line-" + ctx.OP().getSymbol().getLine() + " type-" + ctx.OP().getText() + " vars-" + ctx.VAR().getText());
             DSLVar vx = null;
             for(DSLVar v : currentBlock.getBlockVariables())
             {
@@ -356,12 +345,6 @@
             if(ctx.DSL_ASSIGN() != null) {
                 String[] aux = new String[2];
                 aux[0] = ctx.leftSide().VAR().getText();
-                /*if (ctx.rightSide().complexOperation() != null)
-                    aux[1] = ctx.rightSide().complexOperation().VAR().get(0).getText();
-                else if (ctx.rightSide().simpleOperation() != null)
-                    aux[1] = ctx.rightSide().simpleOperation().VAR().getText();
-                else if (ctx.rightSide().VAR() != null)
-                    aux[1] = ctx.rightSide().VAR().getText();*/
 
                 ArrayList<DSLVar> aux1 = new ArrayList<>();
                 DSLVar v1 = new DSLVar();
@@ -374,7 +357,6 @@
                         if(ctx.VAR_TYPE() != null)
                         {
                             v.IOtype = ctx.VAR_TYPE().getText();
-                            //System.out.println("TESTE" + ctx.VAR_TYPE().getText());
                         }
                         aux1.set(0, v);
                         v.markAsUsed();
@@ -382,8 +364,6 @@
                     }
                 }
 
-
-                // System.out.println(aux[0] + aux[1]);
                 DSLOperation tmp = new DSLOperation(ctx.DSL_ASSIGN().getSymbol().getLine(), "assignment", aux1);
                 currentBlock.addOp(tmp);
             }
@@ -406,8 +386,8 @@
             }
         }
 
-        @Override public void exitPrint(DSLParser.PrintContext ctx) {
-            //System.out.println("operation: line-" + ctx.DUMP().getSymbol().getLine() + " type-" + "print" + " vars-" + ctx.VAR().getText());
+        @Override public void exitPrint(DSLParser.PrintContext ctx)
+        {
 
             DSLVar vx = null;
             for(DSLVar v : currentBlock.getBlockVariables())

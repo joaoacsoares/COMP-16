@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Joao on 22/05/2016.
  */
+
 public class DSLOperation {
     private int line;
     private ArrayList<String> types = new ArrayList<>();
@@ -28,9 +29,7 @@ public class DSLOperation {
 
     }
     public DSLOperation()
-    {
-
-    }
+    { }
 
 
     public DSLOperation(int l, String t , DSLVar vars)
@@ -40,7 +39,6 @@ public class DSLOperation {
         //this.vars =
         this.vars.add(vars);
     }
-
 
 
     public ArrayList<String> getTypes()
@@ -62,7 +60,6 @@ public class DSLOperation {
         this.pOp = pOp;
     }
     public String getJavacode(){return javacode;}
-
     public ArrayList<DSLVar> getVars()
     {
         return vars;
@@ -72,20 +69,6 @@ public class DSLOperation {
         this.vars = va;
     }
 
-    public void print ()
-    {
-        /*//pOp = "//" + type; //+ "//" + line;
-
-        for(DSLVar b : vars)
-        {
-            pOp += ("//" + b.name + "//" + type + "//");
-        }
-
-        //pOp += ("//" + type);
-        //pOp += "" ;
-        //System.out.println(pOp);
-*/
-    }
 
     public void addOperation(DSLOperation op)
     {
@@ -101,16 +84,16 @@ public class DSLOperation {
             switch (types.get(i))
             {
                 case "declaration":
-                    //System.out.print(vars.get(i).IOtype);
                     if(vars.get(i).IOtype.equals("Output"))
                         javacode += "ArrayList<Object> " + vars.get(i).name + " = new ArrayList<>();\n";
-                    //javacode += "ArrayList<int> " + vars.get(0).name +"; \n";
-                    //System.out.println(javacode);
+
                     break;
+
                 case ".":
                     javacode +=vars.get(i+1).name + ".addAll(" + vars.get(i).name + ");\n";
-                    //System.out.println(javacode);
+
                     break;
+
                 case "+":
                     javacode += "for(Object obj : " + vars.get(i+1).name + "){\n";
                     javacode += "if(!"+vars.get(i).name+".contains(obj))\n";
@@ -127,14 +110,13 @@ public class DSLOperation {
                     break;
                 case "assignment":
 
-                    //System.out.println(javacode);
                     break;
+
                 case "declAssi":
-                   // System.out.println(vars.get(i).name);
                     if(vars.get(i+1).IOtype.equals("Output"))
                         javacode += "ArrayList<Object> " + vars.get(i+1).name + " = new ArrayList<>();\n";
                     javacode += vars.get(i+1).name + " = " + vars.get(i).name + ";\n";
-                    //System.out.println(javacode);
+
                     break;
                 case "'":
                     javacode += "ArrayList<Object> tmpRev = new ArrayList<>();\n";
@@ -142,9 +124,6 @@ public class DSLOperation {
                     javacode += "tmpRev.add(i, " + vars.get(i).name + ".get(" + vars.get(i).name + ".size()-i-1));\n}\n";
                     javacode += vars.get(i).name + " = tmpRev;\n";
 
-                    //ArrayList<Object> tmpRev = new ArrayList<>();
-                    //tmpRev.
-                    //System.out.println(javacode);
                     break;
 
                 default:
@@ -162,67 +141,11 @@ public class DSLOperation {
 
                         javacode += vars.get(i).name + ".get(" + id + ");\n";
                     }
-                    //System.out.println(words[2]);
+
                     break;
 
             }
         }
-
-        //System.out.println(pOp);
-        /*for(String s : pOp.split("<a>"))
-        {
-            if(s.length() >1)
-            {
-                //System.out.println(s);
-                String[] words = s.split("//");
-                //System.out.println(words[2]);
-                switch (words[2])
-                {
-                    case "declaration":
-                        javacode = "ArrayList<int> " + words[1] +";";
-                        //System.out.println(javacode);
-                        break;
-                    case ".":
-                        javacode = ".";
-                        //System.out.println(javacode);
-                        break;
-                    case "+":
-                        javacode = "+";
-                        //System.out.println(javacode);
-                        break;
-                    case "int":
-                        javacode = "int";
-                        //System.out.println(javacode);
-                        break;
-                    case "assignment":
-                        javacode = "=";
-                        //System.out.println(javacode);
-                        break;
-                    case "declAssi":
-                        javacode = "decl=";
-                        //System.out.println(javacode);
-                        break;
-                    case "'":
-                        javacode = "reverse";
-
-                        //System.out.println(javacode);
-                        break;
-
-                    default:
-                        if(words[2].contains("[") && words[2].contains(",") && words[2].contains("]"))
-                        {
-                            javacode = "range";
-                        }
-                        else if (words[2].contains("[") && words[2].contains("]"))
-                        {
-                            javacode = "select";
-                        }
-                        //System.out.println(words[2]);
-                        break;
-
-                }
-            }
-        }*/
     }
 
 }
